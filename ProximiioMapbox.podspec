@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ProximiioMapbox.'
+  s.version          = '0.2.0'
+  s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,17 +21,19 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/x-oauth-basic/ProximiioMapbox'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/proximiio/proximiio-mapbox-ios-pod'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'x-oauth-basic' => 'matej.drzik@quanto.sk' }
-  s.source           = { :git => 'https://github.com/x-oauth-basic/ProximiioMapbox.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/proximiio/proximiio-mapbox-ios-pod', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
-  s.source_files = 'ProximiioMapbox/Classes/**/*'
-  
+  s.dependency       'IndoorAtlas'
+  s.dependency       'Proximiio', '~> 1.1.65'
+  s.dependency       'Mapbox-iOS-SDK', '~> 4.10'
+  s.dependency       'SwiftyJSON', '~> 4.0'
+
+  s.ios.vendored_frameworks = 'ProximiioMapbox.framework'
   # s.resource_bundles = {
   #   'ProximiioMapbox' => ['ProximiioMapbox/Assets/*.png']
   # }
