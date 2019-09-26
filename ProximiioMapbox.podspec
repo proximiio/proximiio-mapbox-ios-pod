@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.dependency       'Mapbox-iOS-SDK', '~> 4.10'
   s.dependency       'SwiftyJSON', '~> 4.0'
 
-  s.ios.vendored_frameworks = 'ProximmioMapbox/ProximiioMapbox.framework'
+  s.ios.vendored_frameworks = 'ProximiioMapbox/ProximiioMapbox.framework'
   # s.resource_bundles = {
   #   'ProximiioMapbox' => ['ProximiioMapbox/Assets/*.png']
   # }
