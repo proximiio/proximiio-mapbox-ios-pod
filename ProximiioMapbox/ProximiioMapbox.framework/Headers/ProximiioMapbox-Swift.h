@@ -224,14 +224,12 @@ SWIFT_CLASS("_TtC15ProximiioMapbox16ProximiioFeature")
 @class ProximiioFloor;
 @class CLLocation;
 @class ProximiioMapboxConfiguration;
-@class MGLStyleLayer;
 enum ProximiioMapboxAuthorizationResult : NSInteger;
 @class MGLMapView;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @interface ProximiioMapbox : NSObject <NSURLSessionDelegate>
-@property (nonatomic, weak) id <ProximiioMapboxDelegate> _Nullable delegate;
-@property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
+@property (nonatomic, weak) id <ProximiioMapboxDelegate> _Nullable mapDelegate;
 @property (nonatomic, copy) NSArray<ProximiioAmenity *> * _Nonnull amenities;
 @property (nonatomic, copy) NSArray<ProximiioFeature *> * _Nonnull features;
 @property (nonatomic, copy) NSArray<ProximiioFeature *> * _Nonnull pois;
@@ -241,12 +239,17 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
 - (void)setLevelWithLevel:(NSInteger)level;
 - (void)reconfigureWithNewConfig:(ProximiioMapboxConfiguration * _Nonnull)newConfig;
-@property (nonatomic, readonly, copy) NSArray<MGLStyleLayer *> * _Nonnull layers;
 - (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
 - (nonnull instancetype)initWithMapView:(MGLMapView * _Nonnull)mapView configuration:(ProximiioMapboxConfiguration * _Nonnull)configuration delegate:(id <ProximiioMapboxDelegate> _Nonnull)delegate OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
+
+
+
+
 
 
 
@@ -264,7 +267,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox28ProximiioMapboxConfiguration")
 @property (nonatomic) BOOL showGeoJSONFloorplans;
 @property (nonatomic) BOOL showPOIs;
 @property (nonatomic) BOOL showUserLocation;
-@property (nonatomic, strong) UIImage * _Nonnull userLocationImage;
 @property (nonatomic, strong) UIImage * _Nonnull routeStartImage;
 @property (nonatomic, strong) UIImage * _Nonnull routeFinishImage;
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token OBJC_DESIGNATED_INITIALIZER;
@@ -274,10 +276,12 @@ SWIFT_CLASS("_TtC15ProximiioMapbox28ProximiioMapboxConfiguration")
 @end
 
 @class ProximiioRoute;
+@class MGLPointFeature;
 
 SWIFT_PROTOCOL("_TtP15ProximiioMapbox23ProximiioMapboxDelegate_")
 @protocol ProximiioMapboxDelegate
 - (void)didUpdateRouteWithRoute:(ProximiioRoute * _Nonnull)route;
+- (void)didTapOnFeature:(MGLPointFeature * _Nonnull)feature;
 @end
 
 typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, closed) {

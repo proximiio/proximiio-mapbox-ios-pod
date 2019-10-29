@@ -7,28 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1419BA82C46F994533971E4A /* Pods_ProximiioMapbox_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD99ABD94C31A3F69A532AB /* Pods_ProximiioMapbox_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		61634F31227C8149002532B5 /* ProximiioMapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61634F30227C8148002532B5 /* ProximiioMapbox.framework */; };
-		61634F34227C829E002532B5 /* ProximiioMapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61634F30227C8148002532B5 /* ProximiioMapbox.framework */; };
-		61634F35227C829E002532B5 /* ProximiioMapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61634F30227C8148002532B5 /* ProximiioMapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C71E2A7140224942F63C6B6E /* Pods_ProximiioMapbox_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E50FEB354D1B82259D080B1 /* Pods_ProximiioMapbox_Tests.framework */; };
-		F0F26D7AADA6576482815368 /* Pods_ProximiioMapbox_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC9A591C9648ECFFA045ED7 /* Pods_ProximiioMapbox_Example.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = ProximiioMapbox;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		61634F36227C829E002532B5 /* Embed Frameworks */ = {
@@ -37,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				61634F35227C829E002532B5 /* ProximiioMapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,8 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		48479DEB037C5994F5F687C7 /* Pods-ProximiioMapbox_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Tests.release.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Tests/Pods-ProximiioMapbox_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		5C8EBF3590D111D80D171F90 /* Pods-ProximiioMapbox_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Tests/Pods-ProximiioMapbox_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		13D77959888B8DC2E7F46522 /* Pods-ProximiioMapbox_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Example.debug.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3487256F8831ADBF634543B6 /* Pods-ProximiioMapbox_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Example.release.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ProximiioMapbox_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximiioMapbox_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,18 +38,10 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* ProximiioMapbox_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProximiioMapbox_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		61634F30227C8148002532B5 /* ProximiioMapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximiioMapbox.framework; path = ../ProximiioMapbox/ProximiioMapbox.framework; sourceTree = "<group>"; };
-		619CE4BA227B3A92000F3257 /* ProximiioMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximiioMap.framework; path = ProximiioMapbox/ProximiioMap.framework; sourceTree = "<group>"; };
 		75D48900525F4258E6433597 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		8E50FEB354D1B82259D080B1 /* Pods_ProximiioMapbox_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProximiioMapbox_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		900883AFBA9B49EB5C024CF3 /* Pods-ProximiioMapbox_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Example.release.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.release.xcconfig"; sourceTree = "<group>"; };
-		ADC9A591C9648ECFFA045ED7 /* Pods_ProximiioMapbox_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProximiioMapbox_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FE1DAF42AAFBFCE8AD12A8 /* ProximiioMapbox.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ProximiioMapbox.podspec; path = ../ProximiioMapbox.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BCD99ABD94C31A3F69A532AB /* Pods_ProximiioMapbox_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProximiioMapbox_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F04C4AA96BD7AC0B9D56AB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		C54D4FA9BC7B82DBE41721BE /* Pods-ProximiioMapbox_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximiioMapbox_Example.debug.xcconfig"; path = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,28 +49,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61634F31227C8149002532B5 /* ProximiioMapbox.framework in Frameworks */,
-				61634F34227C829E002532B5 /* ProximiioMapbox.framework in Frameworks */,
-				F0F26D7AADA6576482815368 /* Pods_ProximiioMapbox_Example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		607FACE21AFB9204008FA782 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C71E2A7140224942F63C6B6E /* Pods_ProximiioMapbox_Tests.framework in Frameworks */,
+				1419BA82C46F994533971E4A /* Pods_ProximiioMapbox_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5716C8189CD852B63FDF5DDD /* Frameworks */ = {
+		3EDD677094E5504681A7E9D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ADC9A591C9648ECFFA045ED7 /* Pods_ProximiioMapbox_Example.framework */,
-				8E50FEB354D1B82259D080B1 /* Pods_ProximiioMapbox_Tests.framework */,
+				13D77959888B8DC2E7F46522 /* Pods-ProximiioMapbox_Example.debug.xcconfig */,
+				3487256F8831ADBF634543B6 /* Pods-ProximiioMapbox_Example.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5B872EAC4D834AFC12DACF3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD99ABD94C31A3F69A532AB /* Pods_ProximiioMapbox_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -102,14 +76,12 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				61634F30227C8148002532B5 /* ProximiioMapbox.framework */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for ProximiioMapbox */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				9E9284B8EC65CD8E138DC49A /* Pods */,
-				5716C8189CD852B63FDF5DDD /* Frameworks */,
 				61CE105A227B405F0072E5B6 /* Recovered References */,
+				3EDD677094E5504681A7E9D7 /* Pods */,
+				5B872EAC4D834AFC12DACF3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* ProximiioMapbox_Example.app */,
-				607FACE51AFB9204008FA782 /* ProximiioMapbox_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,23 +115,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,20 +128,8 @@
 		61CE105A227B405F0072E5B6 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				619CE4BA227B3A92000F3257 /* ProximiioMap.framework */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		9E9284B8EC65CD8E138DC49A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C54D4FA9BC7B82DBE41721BE /* Pods-ProximiioMapbox_Example.debug.xcconfig */,
-				900883AFBA9B49EB5C024CF3 /* Pods-ProximiioMapbox_Example.release.xcconfig */,
-				5C8EBF3590D111D80D171F90 /* Pods-ProximiioMapbox_Tests.debug.xcconfig */,
-				48479DEB037C5994F5F687C7 /* Pods-ProximiioMapbox_Tests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ProximiioMapbox_Example" */;
 			buildPhases = (
-				E53E69EC3BF767733BABAD6D /* [CP] Check Pods Manifest.lock */,
+				4F03BC4A69CC19C5E02A36DC /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				C363B3D30F7FC59A290A3A4D /* [CP] Embed Pods Frameworks */,
 				61634F36227C829E002532B5 /* Embed Frameworks */,
+				067D8D13424B6EDF5368A542 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,26 +155,6 @@
 			productReference = 607FACD01AFB9204008FA782 /* ProximiioMapbox_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* ProximiioMapbox_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ProximiioMapbox_Tests" */;
-			buildPhases = (
-				31351C396E4B7C2ADB285D02 /* [CP] Check Pods Manifest.lock */,
-				607FACE11AFB9204008FA782 /* Sources */,
-				607FACE21AFB9204008FA782 /* Frameworks */,
-				607FACE31AFB9204008FA782 /* Resources */,
-				958B1DD851F9A99220E52FA0 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
-			);
-			name = ProximiioMapbox_Tests;
-			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* ProximiioMapbox_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -240,32 +162,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 2ULWCJMDBJ;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 						};
 					};
-					607FACE41AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
-					};
 				};
 			};
 			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "ProximiioMapbox" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -275,7 +191,6 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* ProximiioMapbox_Example */,
-				607FACE41AFB9204008FA782 /* ProximiioMapbox_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,84 +206,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE31AFB9204008FA782 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31351C396E4B7C2ADB285D02 /* [CP] Check Pods Manifest.lock */ = {
+		067D8D13424B6EDF5368A542 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ProximiioMapbox_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		958B1DD851F9A99220E52FA0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProximiioMapbox_Tests/Pods-ProximiioMapbox_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProximiioMapbox_Tests/Pods-ProximiioMapbox_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C363B3D30F7FC59A290A3A4D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example-frameworks.sh",
 				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/F6FDF133-0198-394E-9C8F-5043F94B4790.bcsymbolmap",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/B4615DAE-86F8-35AB-B4D1-B1F1420E374A.bcsymbolmap",
+				"${PODS_ROOT}/Proximiio/Pod/Proximiio.framework",
+				"${PODS_ROOT}/../../ProximiioMapbox/ProximiioMapbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/F6FDF133-0198-394E-9C8F-5043F94B4790.bcsymbolmap",
+				"${BUILT_PRODUCTS_DIR}/B4615DAE-86F8-35AB-B4D1-B1F1420E374A.bcsymbolmap",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Proximiio.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProximiioMapbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,7 +241,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E53E69EC3BF767733BABAD6D /* [CP] Check Pods Manifest.lock */ = {
+		4F03BC4A69CC19C5E02A36DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,23 +275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE11AFB9204008FA782 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* ProximiioMapbox_Example */;
-			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
@@ -496,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -545,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -555,7 +404,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C54D4FA9BC7B82DBE41721BE /* Pods-ProximiioMapbox_Example.debug.xcconfig */;
+			baseConfigurationReference = 13D77959888B8DC2E7F46522 /* Pods-ProximiioMapbox_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2ULWCJMDBJ;
@@ -567,19 +416,19 @@
 					"${PROJECT_DIR}/../ProximiioMapbox",
 				);
 				INFOPLIST_FILE = ProximiioMapbox/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 900883AFBA9B49EB5C024CF3 /* Pods-ProximiioMapbox_Example.release.xcconfig */;
+			baseConfigurationReference = 3487256F8831ADBF634543B6 /* Pods-ProximiioMapbox_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2ULWCJMDBJ;
@@ -591,53 +440,13 @@
 					"${PROJECT_DIR}/../ProximiioMapbox",
 				);
 				INFOPLIST_FILE = ProximiioMapbox/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		607FACF31AFB9204008FA782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C8EBF3590D111D80D171F90 /* Pods-ProximiioMapbox_Tests.debug.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProximiioMapbox_Example.app/ProximiioMapbox_Example";
-			};
-			name = Debug;
-		};
-		607FACF41AFB9204008FA782 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48479DEB037C5994F5F687C7 /* Pods-ProximiioMapbox_Tests.release.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProximiioMapbox_Example.app/ProximiioMapbox_Example";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -658,15 +467,6 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ProximiioMapbox_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				607FACF31AFB9204008FA782 /* Debug */,
-				607FACF41AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

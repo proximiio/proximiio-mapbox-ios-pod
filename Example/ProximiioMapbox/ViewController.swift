@@ -29,14 +29,21 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             }
         })
         
-        ProximiioMapbox.shared.authorize(token: TOKEN_PROXIMIIO) { (authResult) in
-            if (authResult == .success) {
-                ProximiioMapbox.shared.addIndoorSupportTo(mapView: self.mapView)
+        
+        let mapToken = Proximiio.sharedInstance()?.token() ?? ""
+        let config = ProximiioMapboxConfiguration(token: mapToken)
+
+        let mapBoxHelper = ProximiioMapbox(mapView: mapView, configuration: config, delegate: self)
+        mapBoxHelper.initialize { result in
+            if result == .success {
+                /// set map delegate
+                self.mapView?.delegate = self
+                /// set base behaviour for tracking
+                self.mapView?.userTrackingMode = .followWithHeading
             }
         }
-
+        
         mapView.delegate = self
-        mapView.styleURL = ProximiioMapbox.shared.styleURL
         
         super.viewDidLoad()
     }
@@ -48,3 +55,14 @@ class ViewController: UIViewController, MGLMapViewDelegate {
 
 }
 
+extension ViewController: ProximiioMapboxDelegate {
+    func didUpdateRoute(route: ProximiioRoute) {
+        
+    }
+    
+    func didTapOn(feature: MGLPointFeature) {
+        
+    }
+    
+    
+}

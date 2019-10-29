@@ -26,11 +26,11 @@ TODO: Add long description of the pod here.
   s.author           = { 'x-oauth-basic' => 'matej.drzik@quanto.sk' }
   s.source           = { :git => 'https://github.com/proximiio/proximiio-mapbox-ios-pod', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '12.0'
 
   s.dependency       'IndoorAtlas'
-  s.dependency       'Proximiio', '~> 1.1.92'
-  s.dependency       'Mapbox-iOS-SDK', '~> 5.4'
+  s.dependency       'Proximiio'
+  s.dependency       'Mapbox-iOS-SDK'
   s.dependency       'SwiftyJSON'
 
   s.vendored_frameworks = 'ProximiioMapbox/ProximiioMapbox.framework'

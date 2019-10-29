@@ -1,0 +1,36 @@
+{
+  "name": "ProximiioMapbox",
+  "version": "0.2.5",
+  "summary": "Proximi.io Mapbox Indoor Support",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/proximiio/proximiio-mapbox-ios-pod",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "x-oauth-basic": "matej.drzik@quanto.sk"
+  },
+  "source": {
+    "git": "https://github.com/proximiio/proximiio-mapbox-ios-pod",
+    "tag": "0.2.5"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "dependencies": {
+    "IndoorAtlas": [
+
+    ],
+    "Proximiio": [
+
+    ],
+    "Mapbox-iOS-SDK": [
+
+    ],
+    "SwiftyJSON": [
+
+    ]
+  },
+  "vendored_frameworks": "ProximiioMapbox/ProximiioMapbox.framework"
+}

@@ -1,0 +1,1056 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		28F049B226895536D5DB29F6D8E0D8DE /* ProximiioMapbox */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B5F42652EDB412FC8B508B2D91C6C2E2 /* Build configuration list for PBXAggregateTarget "ProximiioMapbox" */;
+			buildPhases = (
+			);
+			dependencies = (
+				B91D97139FE713ABD621987C18309549 /* PBXTargetDependency */,
+				E2022E62EDDB8C79BE70E2544F36FC93 /* PBXTargetDependency */,
+				0467A40C2D06BE931D016169B6B2EE15 /* PBXTargetDependency */,
+				B800624983A00F92F9F5192A52408BDB /* PBXTargetDependency */,
+			);
+			name = ProximiioMapbox;
+			productName = ProximiioMapbox;
+		};
+		3C00E69971F9D9A57AB7356D9277C0EF /* Proximiio */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1C57B6A9D2CBAF8E8A0C1C3140468F75 /* Build configuration list for PBXAggregateTarget "Proximiio" */;
+			buildPhases = (
+			);
+			dependencies = (
+				C3D97A0465A63AA08AEA84B19739C228 /* PBXTargetDependency */,
+			);
+			name = Proximiio;
+			productName = Proximiio;
+		};
+		6746AB6F4D992402B59D1651512EA19E /* Mapbox-iOS-SDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 83F7A7525EE724C50FF6E579E6AB7E7F /* Build configuration list for PBXAggregateTarget "Mapbox-iOS-SDK" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = "Mapbox-iOS-SDK";
+			productName = "Mapbox-iOS-SDK";
+		};
+		AA6E119C34F4DE60D4FFF46C6C2543EA /* IndoorAtlas */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 17617C75CAAAEFFACDA6EEF24BB9C4C5 /* Build configuration list for PBXAggregateTarget "IndoorAtlas" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = IndoorAtlas;
+			productName = IndoorAtlas;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		2B5065905F8E94DBE3E88B420DC81270 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		5B6837EEEB9B9DE8759BD60086BDFCDC /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BE9332318DBC5CF03C1176F28E94990 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60B2F81E04E7BB9B84376F6F8CD3296C /* Pods-ProximiioMapbox_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CFB84578DAE114BA2499AD3973E3C87 /* Pods-ProximiioMapbox_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBD61D2A92D3ABBC967C25927AAF3C32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C10406FC16A8F3017F7550832ECCB21E /* Pods-ProximiioMapbox_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8327619D12229144226B633311E612F7 /* Pods-ProximiioMapbox_Example-dummy.m */; };
+		E81A908F7498ECE4C85CC0A35CE5DBC4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A930D3AB6C07E01E826498FAC3AC56 /* SwiftyJSON.swift */; };
+		F0DE90DBBCB041871B7067476CA14404 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58285D9128AD7A31E1C3BD6EE763AE6E /* SwiftyJSON-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		059575C51F279BF79FE3187C595C82A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28F049B226895536D5DB29F6D8E0D8DE;
+			remoteInfo = ProximiioMapbox;
+		};
+		29F00535F2AE48706F1A36571879BFC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6746AB6F4D992402B59D1651512EA19E;
+			remoteInfo = "Mapbox-iOS-SDK";
+		};
+		484048D85DEB33E66EA82931B6BB4DE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6E119C34F4DE60D4FFF46C6C2543EA;
+			remoteInfo = IndoorAtlas;
+		};
+		5682D3D5C163D4DE95E82096557FA63E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6E119C34F4DE60D4FFF46C6C2543EA;
+			remoteInfo = IndoorAtlas;
+		};
+		B2D9758FD1E27D1C0602D423FA4D591A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6E119C34F4DE60D4FFF46C6C2543EA;
+			remoteInfo = IndoorAtlas;
+		};
+		BD922E4683100A25FA0B450E5D689EAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
+			remoteInfo = SwiftyJSON;
+		};
+		D1F2BC4BCCEA78E28122F4C8F6A3BDE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
+			remoteInfo = SwiftyJSON;
+		};
+		E27E3C131F05145BF2B3AB8293E59EDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6746AB6F4D992402B59D1651512EA19E;
+			remoteInfo = "Mapbox-iOS-SDK";
+		};
+		F550EB2A05AF9A9D11F203B1CC3FF9FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C00E69971F9D9A57AB7356D9277C0EF;
+			remoteInfo = Proximiio;
+		};
+		F597EC53861AFD7A60DD073F75992C44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C00E69971F9D9A57AB7356D9277C0EF;
+			remoteInfo = Proximiio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05FA4972B8A190A6E14F7E44C1210ECD /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		0E5CAA60791B1CB7F68C407E9A00789F /* Pods_ProximiioMapbox_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProximiioMapbox_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19069AE2EDD9F035925A4FC70D248CD2 /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
+		1CFB84578DAE114BA2499AD3973E3C87 /* Pods-ProximiioMapbox_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ProximiioMapbox_Example-umbrella.h"; sourceTree = "<group>"; };
+		25502126B544440F8717487535622BF1 /* Pods-ProximiioMapbox_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ProximiioMapbox_Example-Info.plist"; sourceTree = "<group>"; };
+		2E9A6E58E1AD48D9D3538520C3865FB8 /* Mapbox-iOS-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Mapbox-iOS-SDK.xcconfig"; sourceTree = "<group>"; };
+		319D0A3FBE67DC230D8CFFFD8E7072E8 /* IndoorAtlas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IndoorAtlas.xcconfig; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		37BF7C28747DE8E2829C69839A0744F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4AA0448B0D5E818A538EEF0B292B84E9 /* Pods-ProximiioMapbox_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ProximiioMapbox_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		58285D9128AD7A31E1C3BD6EE763AE6E /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		5BE9332318DBC5CF03C1176F28E94990 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		6C754DADDB99223DCC7288DEEE21C6BE /* Proximiio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Proximiio.framework; path = Pod/Proximiio.framework; sourceTree = "<group>"; };
+		784B858023A006F7E7D668A2A80ED8DC /* Pods-ProximiioMapbox_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ProximiioMapbox_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		7E98BBBB40D7B0C9748E5A7C77295194 /* ProximiioMapbox.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = ProximiioMapbox.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8327619D12229144226B633311E612F7 /* Pods-ProximiioMapbox_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ProximiioMapbox_Example-dummy.m"; sourceTree = "<group>"; };
+		97EA4DAC954421FE38FB2335B9C7B476 /* Pods-ProximiioMapbox_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ProximiioMapbox_Example-frameworks.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AC2163DCB7C50B9EA2B8EB33C9AA3D61 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		AEA9CECDB42C7E440475F35CE6A3FD99 /* IndoorAtlas.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IndoorAtlas.framework; path = "indooratlas-ios-sdk/IndoorAtlas.framework"; sourceTree = "<group>"; };
+		B7A930D3AB6C07E01E826498FAC3AC56 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		C04218BB3E79551303BBB94AACF10AA6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C65D513565014A246B3002CCDBA6B22C /* Pods-ProximiioMapbox_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ProximiioMapbox_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D10C636ADE9A2D3FB959BC70EFE56AAA /* Proximiio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Proximiio.xcconfig; sourceTree = "<group>"; };
+		D8E569C78324EF0801ADC94B90DC0656 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		DA9F384486102957B494F8B6D5D83078 /* ProximiioMapbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ProximiioMapbox.xcconfig; sourceTree = "<group>"; };
+		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E887C573EEB1FB2D44B15518AEC26751 /* Pods-ProximiioMapbox_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ProximiioMapbox_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE702A86C35E6E4066300773063919E4 /* Pods-ProximiioMapbox_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ProximiioMapbox_Example.modulemap"; sourceTree = "<group>"; };
+		F45AF58C4649D2D616574811F5ED057E /* ProximiioMapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximiioMapbox.framework; path = ProximiioMapbox/ProximiioMapbox.framework; sourceTree = "<group>"; };
+		F4AC468422DE32C321508D915A84B500 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = dynamic/Mapbox.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		075586928E57779773DC5C3130B4BE54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD61D2A92D3ABBC967C25927AAF3C32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCFAE8B74D0EF473742255ACD6197B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B5065905F8E94DBE3E88B420DC81270 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13A035DDAC0EBF53BB08DA0F667B174A /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				B7A930D3AB6C07E01E826498FAC3AC56 /* SwiftyJSON.swift */,
+				67E9FAF3B17BF1070FC70424F10370E3 /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		2DC2D03EDF35C5466CAE8721BD1268C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E5CAA60791B1CB7F68C407E9A00789F /* Pods_ProximiioMapbox_Example.framework */,
+				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32F294AF6F1D0ABA88B243687B71F775 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F45AF58C4649D2D616574811F5ED057E /* ProximiioMapbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CDB2B0FB82A41B831495D0C50864C2E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA9F384486102957B494F8B6D5D83078 /* ProximiioMapbox.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ProximiioMapbox";
+			sourceTree = "<group>";
+		};
+		60E6515361083265A3BC5D23CD3E7E17 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D24E959B6B5016B4129CBFDD0DDFC848 /* ProximiioMapbox */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		6519756C2D87C9427DCB595B3C940E9A /* Pods-ProximiioMapbox_Example */ = {
+			isa = PBXGroup;
+			children = (
+				EE702A86C35E6E4066300773063919E4 /* Pods-ProximiioMapbox_Example.modulemap */,
+				E887C573EEB1FB2D44B15518AEC26751 /* Pods-ProximiioMapbox_Example-acknowledgements.markdown */,
+				4AA0448B0D5E818A538EEF0B292B84E9 /* Pods-ProximiioMapbox_Example-acknowledgements.plist */,
+				8327619D12229144226B633311E612F7 /* Pods-ProximiioMapbox_Example-dummy.m */,
+				97EA4DAC954421FE38FB2335B9C7B476 /* Pods-ProximiioMapbox_Example-frameworks.sh */,
+				25502126B544440F8717487535622BF1 /* Pods-ProximiioMapbox_Example-Info.plist */,
+				1CFB84578DAE114BA2499AD3973E3C87 /* Pods-ProximiioMapbox_Example-umbrella.h */,
+				784B858023A006F7E7D668A2A80ED8DC /* Pods-ProximiioMapbox_Example.debug.xcconfig */,
+				C65D513565014A246B3002CCDBA6B22C /* Pods-ProximiioMapbox_Example.release.xcconfig */,
+			);
+			name = "Pods-ProximiioMapbox_Example";
+			path = "Target Support Files/Pods-ProximiioMapbox_Example";
+			sourceTree = "<group>";
+		};
+		67E9FAF3B17BF1070FC70424F10370E3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				05FA4972B8A190A6E14F7E44C1210ECD /* SwiftyJSON.modulemap */,
+				AC2163DCB7C50B9EA2B8EB33C9AA3D61 /* SwiftyJSON.xcconfig */,
+				58285D9128AD7A31E1C3BD6EE763AE6E /* SwiftyJSON-dummy.m */,
+				19069AE2EDD9F035925A4FC70D248CD2 /* SwiftyJSON-Info.plist */,
+				D8E569C78324EF0801ADC94B90DC0656 /* SwiftyJSON-prefix.pch */,
+				5BE9332318DBC5CF03C1176F28E94990 /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		7A00436869A16AF8CE4CD063829970F6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E9A6E58E1AD48D9D3538520C3865FB8 /* Mapbox-iOS-SDK.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Mapbox-iOS-SDK";
+			sourceTree = "<group>";
+		};
+		9666AE4C7970B9FB5FE38AC7A75E0C8B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D10C636ADE9A2D3FB959BC70EFE56AAA /* Proximiio.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Proximiio";
+			sourceTree = "<group>";
+		};
+		A07A25F13B2D58D5FB4149B82F5E5F93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C754DADDB99223DCC7288DEEE21C6BE /* Proximiio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB0CD07522EC18DB8CD8672AE1CDDD5C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				C04218BB3E79551303BBB94AACF10AA6 /* LICENSE */,
+				7E98BBBB40D7B0C9748E5A7C77295194 /* ProximiioMapbox.podspec */,
+				37BF7C28747DE8E2829C69839A0744F9 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C4B4D5085A238D37E5CD8795ED543DE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEA9CECDB42C7E440475F35CE6A3FD99 /* IndoorAtlas.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C67577FECC4F04C3774CE6AD24D1D000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4AC468422DE32C321508D915A84B500 /* Mapbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA532BA2393805E9886422813ECCEFE9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				319D0A3FBE67DC230D8CFFFD8E7072E8 /* IndoorAtlas.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IndoorAtlas";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				60E6515361083265A3BC5D23CD3E7E17 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D651DD9C4D3049BF6C5DC01BBCD0F29C /* Pods */,
+				2DC2D03EDF35C5466CAE8721BD1268C0 /* Products */,
+				D71B16EAD6256F279C3F2121D08EE6B7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D24E959B6B5016B4129CBFDD0DDFC848 /* ProximiioMapbox */ = {
+			isa = PBXGroup;
+			children = (
+				32F294AF6F1D0ABA88B243687B71F775 /* Frameworks */,
+				AB0CD07522EC18DB8CD8672AE1CDDD5C /* Pod */,
+				4CDB2B0FB82A41B831495D0C50864C2E /* Support Files */,
+			);
+			name = ProximiioMapbox;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		D651DD9C4D3049BF6C5DC01BBCD0F29C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E34F81ACC5CE61C3DBC78159796AA /* IndoorAtlas */,
+				E04C73E37E7933225008A843E2491650 /* Mapbox-iOS-SDK */,
+				DC86EA7451A575B50F9CF3B8E03B863C /* Proximiio */,
+				13A035DDAC0EBF53BB08DA0F667B174A /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D71B16EAD6256F279C3F2121D08EE6B7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6519756C2D87C9427DCB595B3C940E9A /* Pods-ProximiioMapbox_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		DC86EA7451A575B50F9CF3B8E03B863C /* Proximiio */ = {
+			isa = PBXGroup;
+			children = (
+				A07A25F13B2D58D5FB4149B82F5E5F93 /* Frameworks */,
+				9666AE4C7970B9FB5FE38AC7A75E0C8B /* Support Files */,
+			);
+			path = Proximiio;
+			sourceTree = "<group>";
+		};
+		E04C73E37E7933225008A843E2491650 /* Mapbox-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				C67577FECC4F04C3774CE6AD24D1D000 /* Frameworks */,
+				7A00436869A16AF8CE4CD063829970F6 /* Support Files */,
+			);
+			path = "Mapbox-iOS-SDK";
+			sourceTree = "<group>";
+		};
+		EB8E34F81ACC5CE61C3DBC78159796AA /* IndoorAtlas */ = {
+			isa = PBXGroup;
+			children = (
+				C4B4D5085A238D37E5CD8795ED543DE1 /* Frameworks */,
+				CA532BA2393805E9886422813ECCEFE9 /* Support Files */,
+			);
+			path = IndoorAtlas;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F172EE69330848762F3851D18B39344 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B2F81E04E7BB9B84376F6F8CD3296C /* Pods-ProximiioMapbox_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96687BC883A4921C0D6ADB3B503634A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B6837EEEB9B9DE8759BD60086BDFCDC /* SwiftyJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		71BBDB83A7CB03A21EB6437B91B91FF3 /* Pods-ProximiioMapbox_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E1E10F47D0EE0E81D05CD94C784A163 /* Build configuration list for PBXNativeTarget "Pods-ProximiioMapbox_Example" */;
+			buildPhases = (
+				3F172EE69330848762F3851D18B39344 /* Headers */,
+				79ED45BBB1A0B84BE64B935A882EB505 /* Sources */,
+				075586928E57779773DC5C3130B4BE54 /* Frameworks */,
+				CAC6ACD20B3EB8A94E4D7DD17C3D7709 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87CF43FAD91692BCDEC943E760B016A3 /* PBXTargetDependency */,
+				E9D121DA5392E2141677D35684D248DB /* PBXTargetDependency */,
+				C47734E74FEBDA62E51D69443DFD046F /* PBXTargetDependency */,
+				59C4A4DEB86FCD96FA4420285D901412 /* PBXTargetDependency */,
+				4ABBA6DBC3C7E0AA22008CA378365F2F /* PBXTargetDependency */,
+			);
+			name = "Pods-ProximiioMapbox_Example";
+			productName = "Pods-ProximiioMapbox_Example";
+			productReference = 0E5CAA60791B1CB7F68C407E9A00789F /* Pods_ProximiioMapbox_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC48FE66FD5A620E5F558EA3057DD10B /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				96687BC883A4921C0D6ADB3B503634A1 /* Headers */,
+				11EF813DF177B25AAD8FEDD67CF13360 /* Sources */,
+				CCFAE8B74D0EF473742255ACD6197B7B /* Frameworks */,
+				FFC0B7B993612C63A1AB4BB09A8D2CD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1110;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 2DC2D03EDF35C5466CAE8721BD1268C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA6E119C34F4DE60D4FFF46C6C2543EA /* IndoorAtlas */,
+				6746AB6F4D992402B59D1651512EA19E /* Mapbox-iOS-SDK */,
+				71BBDB83A7CB03A21EB6437B91B91FF3 /* Pods-ProximiioMapbox_Example */,
+				3C00E69971F9D9A57AB7356D9277C0EF /* Proximiio */,
+				28F049B226895536D5DB29F6D8E0D8DE /* ProximiioMapbox */,
+				D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAC6ACD20B3EB8A94E4D7DD17C3D7709 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFC0B7B993612C63A1AB4BB09A8D2CD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		11EF813DF177B25AAD8FEDD67CF13360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0DE90DBBCB041871B7067476CA14404 /* SwiftyJSON-dummy.m in Sources */,
+				E81A908F7498ECE4C85CC0A35CE5DBC4 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79ED45BBB1A0B84BE64B935A882EB505 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10406FC16A8F3017F7550832ECCB21E /* Pods-ProximiioMapbox_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0467A40C2D06BE931D016169B6B2EE15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Proximiio;
+			target = 3C00E69971F9D9A57AB7356D9277C0EF /* Proximiio */;
+			targetProxy = F597EC53861AFD7A60DD073F75992C44 /* PBXContainerItemProxy */;
+		};
+		4ABBA6DBC3C7E0AA22008CA378365F2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = BD922E4683100A25FA0B450E5D689EAC /* PBXContainerItemProxy */;
+		};
+		59C4A4DEB86FCD96FA4420285D901412 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ProximiioMapbox;
+			target = 28F049B226895536D5DB29F6D8E0D8DE /* ProximiioMapbox */;
+			targetProxy = 059575C51F279BF79FE3187C595C82A4 /* PBXContainerItemProxy */;
+		};
+		87CF43FAD91692BCDEC943E760B016A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IndoorAtlas;
+			target = AA6E119C34F4DE60D4FFF46C6C2543EA /* IndoorAtlas */;
+			targetProxy = 5682D3D5C163D4DE95E82096557FA63E /* PBXContainerItemProxy */;
+		};
+		B800624983A00F92F9F5192A52408BDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = D1F2BC4BCCEA78E28122F4C8F6A3BDE2 /* PBXContainerItemProxy */;
+		};
+		B91D97139FE713ABD621987C18309549 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IndoorAtlas;
+			target = AA6E119C34F4DE60D4FFF46C6C2543EA /* IndoorAtlas */;
+			targetProxy = 484048D85DEB33E66EA82931B6BB4DE3 /* PBXContainerItemProxy */;
+		};
+		C3D97A0465A63AA08AEA84B19739C228 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IndoorAtlas;
+			target = AA6E119C34F4DE60D4FFF46C6C2543EA /* IndoorAtlas */;
+			targetProxy = B2D9758FD1E27D1C0602D423FA4D591A /* PBXContainerItemProxy */;
+		};
+		C47734E74FEBDA62E51D69443DFD046F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Proximiio;
+			target = 3C00E69971F9D9A57AB7356D9277C0EF /* Proximiio */;
+			targetProxy = F550EB2A05AF9A9D11F203B1CC3FF9FA /* PBXContainerItemProxy */;
+		};
+		E2022E62EDDB8C79BE70E2544F36FC93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Mapbox-iOS-SDK";
+			target = 6746AB6F4D992402B59D1651512EA19E /* Mapbox-iOS-SDK */;
+			targetProxy = E27E3C131F05145BF2B3AB8293E59EDF /* PBXContainerItemProxy */;
+		};
+		E9D121DA5392E2141677D35684D248DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Mapbox-iOS-SDK";
+			target = 6746AB6F4D992402B59D1651512EA19E /* Mapbox-iOS-SDK */;
+			targetProxy = 29F00535F2AE48706F1A36571879BFC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01BCA937C87F1C6803B19C616B202641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA9F384486102957B494F8B6D5D83078 /* ProximiioMapbox.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		131356BE54884448CA49C07BEDF4BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1A407DABC3FF89D48239FF026F693D64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D10C636ADE9A2D3FB959BC70EFE56AAA /* Proximiio.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2988792EB79050DAB0C2DDD746159261 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9A6E58E1AD48D9D3538520C3865FB8 /* Mapbox-iOS-SDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E25864306B8D2A4691E4B9DABD18627 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319D0A3FBE67DC230D8CFFFD8E7072E8 /* IndoorAtlas.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4029741B91947AE41190A3F6E254414E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C65D513565014A246B3002CCDBA6B22C /* Pods-ProximiioMapbox_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		456F44610570CBCEBED1BFF14E1A5D2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC2163DCB7C50B9EA2B8EB33C9AA3D61 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60FE2CB52C353A5C94A157BA29BFAD33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319D0A3FBE67DC230D8CFFFD8E7072E8 /* IndoorAtlas.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64847D13DB04296566813CB03601CA32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9A6E58E1AD48D9D3538520C3865FB8 /* Mapbox-iOS-SDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		86E9163A691AF726A4243F2B976AB674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 784B858023A006F7E7D668A2A80ED8DC /* Pods-ProximiioMapbox_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ProximiioMapbox_Example/Pods-ProximiioMapbox_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F8A0410A21958D124769A2E67AD47F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA9F384486102957B494F8B6D5D83078 /* ProximiioMapbox.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5409B14A41AE29A73795E24F2092896 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D10C636ADE9A2D3FB959BC70EFE56AAA /* Proximiio.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E107AB5A667D2BCD0AACDDCEFFEB647A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC2163DCB7C50B9EA2B8EB33C9AA3D61 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F090CD07A80273D5A73C8EA19224ADDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17617C75CAAAEFFACDA6EEF24BB9C4C5 /* Build configuration list for PBXAggregateTarget "IndoorAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E25864306B8D2A4691E4B9DABD18627 /* Debug */,
+				60FE2CB52C353A5C94A157BA29BFAD33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C57B6A9D2CBAF8E8A0C1C3140468F75 /* Build configuration list for PBXAggregateTarget "Proximiio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A407DABC3FF89D48239FF026F693D64 /* Debug */,
+				A5409B14A41AE29A73795E24F2092896 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				131356BE54884448CA49C07BEDF4BB2A /* Debug */,
+				F090CD07A80273D5A73C8EA19224ADDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E1E10F47D0EE0E81D05CD94C784A163 /* Build configuration list for PBXNativeTarget "Pods-ProximiioMapbox_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E9163A691AF726A4243F2B976AB674 /* Debug */,
+				4029741B91947AE41190A3F6E254414E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83F7A7525EE724C50FF6E579E6AB7E7F /* Build configuration list for PBXAggregateTarget "Mapbox-iOS-SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2988792EB79050DAB0C2DDD746159261 /* Debug */,
+				64847D13DB04296566813CB03601CA32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5F42652EDB412FC8B508B2D91C6C2E2 /* Build configuration list for PBXAggregateTarget "ProximiioMapbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01BCA937C87F1C6803B19C616B202641 /* Debug */,
+				8F8A0410A21958D124769A2E67AD47F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC48FE66FD5A620E5F558EA3057DD10B /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456F44610570CBCEBED1BFF14E1A5D2E /* Debug */,
+				E107AB5A667D2BCD0AACDDCEFFEB647A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
