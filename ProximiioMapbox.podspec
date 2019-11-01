@@ -32,6 +32,7 @@ TODO: Add long description of the pod here.
   s.dependency       'Proximiio'
   s.dependency       'Mapbox-iOS-SDK'
   s.dependency       'SwiftyJSON'
+  s.dependency       'GRMustache.swift'
 
   s.vendored_frameworks = 'ProximiioMapbox/ProximiioMapbox.framework'
   # s.resource_bundles = {
