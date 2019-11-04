@@ -181,6 +181,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreLocation;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -202,17 +203,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
-SWIFT_CLASS("_TtC15ProximiioMapbox16ProximiioAmenity")
-@interface ProximiioAmenity : NSObject
+
+
+SWIFT_CLASS("_TtC15ProximiioMapbox10PIOAmenity")
+@interface PIOAmenity : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-SWIFT_CLASS("_TtC15ProximiioMapbox16ProximiioFeature")
-@interface ProximiioFeature : NSObject
+SWIFT_CLASS("_TtC15ProximiioMapbox10PIOFeature")
+@interface PIOFeature : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull type;
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull properties;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nonnull properties;
 @property (nonatomic, readonly, copy) NSString * _Nonnull geometryType;
 @property (nonatomic, readonly, copy) NSArray * _Nonnull coordinates;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -222,28 +225,33 @@ SWIFT_CLASS("_TtC15ProximiioMapbox16ProximiioFeature")
 @protocol ProximiioMapboxDelegate;
 @class ProximiioLocation;
 @class ProximiioFloor;
-@class CLLocation;
 @class ProximiioMapboxConfiguration;
+@class MGLStyleLayer;
 enum ProximiioMapboxAuthorizationResult : NSInteger;
 @class MGLMapView;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @interface ProximiioMapbox : NSObject <NSURLSessionDelegate>
 @property (nonatomic, weak) id <ProximiioMapboxDelegate> _Nullable mapDelegate;
-@property (nonatomic, copy) NSArray<ProximiioAmenity *> * _Nonnull amenities;
-@property (nonatomic, copy) NSArray<ProximiioFeature *> * _Nonnull features;
-@property (nonatomic, copy) NSArray<ProximiioFeature *> * _Nonnull pois;
+@property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
+@property (nonatomic, copy) NSArray<PIOAmenity *> * _Nonnull amenities;
+@property (nonatomic, copy) NSArray<PIOFeature *> * _Nonnull features;
+@property (nonatomic, copy) NSArray<PIOFeature *> * _Nonnull pois;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, strong) ProximiioFloor * _Nullable lastFloor;
-- (void)route:(CLLocation * _Nonnull)startLocation :(NSInteger)startLevel :(CLLocation * _Nonnull)finishLocation :(NSInteger)finishLevel;
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
 - (void)setLevelWithLevel:(NSInteger)level;
 - (void)reconfigureWithNewConfig:(ProximiioMapboxConfiguration * _Nonnull)newConfig;
+@property (nonatomic, readonly, copy) NSArray<MGLStyleLayer *> * _Nonnull layers;
 - (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
 - (nonnull instancetype)initWithMapView:(MGLMapView * _Nonnull)mapView configuration:(ProximiioMapboxConfiguration * _Nonnull)configuration delegate:(id <ProximiioMapboxDelegate> _Nonnull)delegate OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
+
+
 
 
 
@@ -300,11 +308,11 @@ SWIFT_CLASS("_TtC15ProximiioMapbox14ProximiioPoint")
 
 SWIFT_CLASS("_TtC15ProximiioMapbox14ProximiioRoute")
 @interface ProximiioRoute : NSObject
-@property (nonatomic, readonly, strong) ProximiioFeature * _Nonnull start;
-@property (nonatomic, readonly, strong) ProximiioFeature * _Nonnull finish;
+@property (nonatomic, readonly, strong) PIOFeature * _Nonnull start;
+@property (nonatomic, readonly, strong) PIOFeature * _Nonnull finish;
 @property (nonatomic, readonly) double distance;
 @property (nonatomic, readonly) BOOL levelChanges;
-@property (nonatomic, readonly, copy) NSDictionary<NSNumber *, ProximiioFeature *> * _Nonnull levelPaths;
+@property (nonatomic, readonly, copy) NSDictionary<NSNumber *, PIOFeature *> * _Nonnull levelPaths;
 @property (nonatomic, readonly, copy) NSArray<ProximiioStep *> * _Nonnull steps;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
