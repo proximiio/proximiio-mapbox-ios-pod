@@ -28,19 +28,10 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '12.0'
 
-<<<<<<< HEAD
-  s.dependency       'IndoorAtlas'
-  s.dependency       'Proximiio'
-  s.dependency       'Mapbox-iOS-SDK'
-  s.dependency       'SwiftyJSON'
-  s.dependency       'GRMustache.swift'
-  s.dependency       'Speech'
-=======
   s.dependency 'Proximiio'
   s.dependency 'Mapbox-iOS-SDK'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
->>>>>>> beta
 
   s.frameworks = 'UIKit', 'Network'
 
