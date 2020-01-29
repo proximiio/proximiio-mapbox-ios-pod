@@ -17,6 +17,16 @@ class PathFinding {
             if (maxLevel === undefined || maxLevel < level) {
                 maxLevel = level;
             }
+            if (feature.properties.levels !== undefined) {
+                feature.properties.levels.forEach(level => {
+                    if (minLevel === undefined || level < minLevel) {
+                        minLevel = level;
+                    }
+                    if (maxLevel === undefined || maxLevel < level) {
+                        maxLevel = level;
+                    }
+                });
+            }
         });
 
         if (minLevel === undefined) throw "No feature with level was supplied!";
@@ -95,6 +105,7 @@ class PathFinding {
             TICKET_GATE: 'ticket_gate',
             BARRIER: 'barrier'
         };
+        this._pathFixDistance = 1.0;
     }
 
     /**
@@ -107,13 +118,15 @@ class PathFinding {
      * @param configuration.avoidRevolvingDoors {Boolean}
      * @param configuration.avoidTicketGates {Boolean}
      * @param configuration.avoidBarriers {Boolean}
+     * @param pathFixDistance {Number}
      */
-    setConfiguration(configuration) {
+    setConfiguration(configuration, pathFixDistance = 1.0) {
         Object.keys(configuration).forEach(property => {
             if (this.configuration.hasOwnProperty(property)) {
                 this.configuration[property] = configuration[property];
             }
         });
+        this._pathFixDistance = pathFixDistance;
     }
 
     rebuildData() {
@@ -275,12 +288,12 @@ class PathFinding {
                     // Intersect point inherits filters from both intersecting lines
                     if (segmentLineString.properties.narrowPath || segmentLineStringToTest.properties.narrowPath) {
                         intersectingPoint.properties.narrowPath = true;
-//                        console.log(intersectingPoint);
+                        // console.log(intersectingPoint);
                     }
                     if (segmentLineString.properties.ramp || segmentLineStringToTest.properties.ramp) {
                         intersectingPoint.properties.ramp = true;
                     }
-                    intersectingPoint.properties.neighbours = [segment[0], segment[1]];
+                    intersectingPoint.properties.neighbours = [segment[0], segment[1], segmentToTest[0], segmentToTest[1]];
                     segment[0].properties.neighbours.push(intersectingPoint);
                     segment[1].properties.neighbours.push(intersectingPoint);
                     // TODO remove this?
@@ -369,11 +382,15 @@ class PathFinding {
             if (segmentIntersectionList) {
                 pointA.properties.neighbours = pointA.properties.neighbours.concat(segmentIntersectionList);
                 pointB.properties.neighbours = pointB.properties.neighbours.concat(segmentIntersectionList);
-                segmentIntersectionPointMap.get(i).forEach(point => {
+                segmentIntersectionList.forEach(point => {
                     point.properties.neighbours = point.properties.neighbours.concat(segmentIntersectionList.filter(it => it !== point));
                 });
+                corridorLineFeatures[i].properties.intersectionPointList = segmentIntersectionList
+            } else {
+                corridorLineFeatures[i].properties.intersectionPointList = []
             }
         }
+//        this.segmentIntersectionPointList = segmentIntersectionPointList.filter(it => it.properties.level >= 0 && it.properties.level < 4).map(it => this._copyPoint(it) );
 
         // Split corridor lines on interesections wilth walls
         for (let i = 0; i < corridorLinePointPairs.length - 1; i++) {
@@ -474,7 +491,20 @@ class PathFinding {
         });
         this.corridorLinePoints = this.corridorLinePoints.concat(segmentIntersectionPointList);
 
+        let levelChangerGroupMap = new Map();
+
         this.levelChangerList.forEach(levelChanger => {
+
+            // Create level changer groups
+            if (levelChanger.properties.group !== undefined) {
+                // Get group array, initiate if neccessary
+                let groupId = levelChanger.properties.group;
+                if (!levelChangerGroupMap.has(groupId)) levelChangerGroupMap.set(groupId, []);
+                let group = levelChangerGroupMap.get(groupId);
+                // Add lc to group map
+                group.push(levelChanger);
+            }
+
             levelChanger.properties.fixedPointMap = new Map();
             levelChanger.properties.levels.forEach(level => {
                 let point = this._copyPoint(levelChanger);
@@ -485,11 +515,15 @@ class PathFinding {
                     if (fixedPoint.properties.onCorridor) {
                         fixedPoint.properties.neighbours = [...this.corridorLinePointPairs[fixedPoint.properties.corridorIndex], ...segmentIntersectionPointMap.get(fixedPoint.properties.corridorIndex)];
                         fixedPoint.properties.neighbours.forEach(it => {
+                            if (it.properties.levels !== undefined) { // if neighbour is level changer
+                                it = it.properties.fixedPointMap.get(level);
+                            }
                             if (it.properties.neighbours === undefined) {
                                 it.properties.neighbours = [];
                             }
                             it.properties.neighbours.push(levelChanger);
                         });
+                        this.corridorLineFeatures[fixedPoint.properties.corridorIndex].properties.intersectionPointList.push(levelChanger);
                     }
                 } else {
                     fixedPoint = this._copyPoint(levelChanger);
@@ -497,6 +531,14 @@ class PathFinding {
                     levelChanger.properties.fixedPointMap.set(level, fixedPoint);
                 }
                 // fixedPoint.properties.amenity = levelChanger.properties.amenity;
+            });
+        });
+
+        levelChangerGroupMap.forEach( (lcList, groupId) => {
+            lcList.forEach(lc => {
+                lc.properties.fixedPointMap.forEach((point, level) => {
+                    point.properties.neighbours.push(...lcList.filter(it => it !== lc));
+                });
             });
         });
     }
@@ -532,10 +574,10 @@ class PathFinding {
      * @private true
      */
     _isPointOnLevel(point, level) {
-        if (point.properties.level === level) {
+        if (point.properties.levels !== undefined) {
+            return point.properties.levels.includes(level)
+        } else if (point.properties.level === level) {
             return true;
-        } else if (point.properties.levels !== undefined) {
-             return point.properties.levels.includes(level)
         } else {
             return false;
         }
@@ -736,24 +778,47 @@ class PathFinding {
                 if (prevFloorFix !== current) {
                     prevFloorFix = this._copyPoint(prevFloorFix);
                     prevFloorFix.properties.level = previous.properties.level;
+                    if (current.id != undefined) prevFloorFix.id = current.id;
+                    if (current.properties.id != undefined) prevFloorFix.properties.id = current.properties.id;
+                    if (current.properties.amenity != undefined) prevFloorFix.properties.amenity = current.properties.amenity;
+                    if (current.properties.type != undefined) prevFloorFix.properties.type = current.properties.type;
                     path.push(prevFloorFix);
                 }
 
-                // Point on previous level
-                let prevFloorPoint = this._copyPoint(current);
-                prevFloorPoint.properties.level = previous.properties.level;
-                path.push(prevFloorPoint);
-
-                // Point on next level
-                let nextFloorPoint = this._copyPoint(current);
-                nextFloorPoint.properties.level = current.properties.cameFrom.properties.level;
-                path.push(nextFloorPoint);
+//                // Point on previous level
+//                let prevFloorPoint = this._copyPoint(current);
+//                prevFloorPoint.properties.level = previous.properties.level;
+//                path.push(prevFloorPoint);
+//
+//                // Point on next level
+//                let nextFloorPoint = this._copyPoint(current);
+//                nextFloorPoint.properties.level = current.properties.cameFrom.properties.level;
+//                path.push(nextFloorPoint);
 
                 // Fix on next level
-                let nextFloorFix = this._unwrapLevelChangerPoint(current, current.properties.cameFrom.properties.level);
+                let nextFloorLevel;
+                if (current.properties.cameFrom.properties.level != undefined) {
+                    nextFloorLevel = current.properties.cameFrom.properties.level;
+                } else {
+                    let bestLevelDistance = Number.MAX_VALUE;
+                    current.properties.fixedPointMap.forEach((fixedPoint, level) => {
+                        if (fixedPoint.properties.neighbours.includes(current.properties.cameFrom)) {
+                            let levelDistance = Math.abs(previous.properties.level - level);
+                            if (levelDistance < bestLevelDistance) {
+                                bestLevelDistance = levelDistance;
+                                nextFloorLevel = level;
+                            }
+                        }
+                    });
+                }
+                let nextFloorFix = this._unwrapLevelChangerPoint(current, nextFloorLevel);
                 if (nextFloorFix !== current) {
                     nextFloorFix = this._copyPoint(nextFloorFix);
-                    nextFloorFix.properties.level = current.properties.cameFrom.properties.level;
+                    nextFloorFix.properties.level = nextFloorLevel;
+                    if (current.id != undefined) nextFloorFix.id = current.id;
+                    if (current.properties.id != undefined) nextFloorFix.properties.id = current.properties.id;
+                    if (current.properties.amenity != undefined) nextFloorFix.properties.amenity = current.properties.amenity;
+                    if (current.properties.type != undefined) nextFloorFix.properties.type = current.properties.type;
                     path.push(nextFloorFix);
                 }
 
@@ -887,7 +952,7 @@ class PathFinding {
         this.bearingCache = new Map();
 
         let fixedStartPoint = this._getFixPointInArea(startPoint);
-        let fixedEndPoint = this._getFixPointInArea(endPoint);
+        let fixedEndPoint = this._getFixEndPoint(endPoint, startPoint.properties.level);
 
         let openSet = [fixedStartPoint];
         let closedSet = [];
@@ -906,10 +971,10 @@ class PathFinding {
             if (current === fixedEndPoint) {
 //                console.log('found the route!');
                 let finalPath = this.reconstructPath(current);
-                if (fixedEndPoint !== endPoint && !fixedEndPoint.properties.onCorridor) {
+                if (fixedEndPoint !== endPoint && (!fixedEndPoint.properties.onCorridor || this._distance(fixedEndPoint, endPoint) > this._pathFixDistance)) {
                     finalPath.push(endPoint);
                 }
-                if (fixedStartPoint !== startPoint && !fixedStartPoint.properties.onCorridor) {
+                if (fixedStartPoint !== startPoint && (!fixedStartPoint.properties.onCorridor || this._distance(fixedStartPoint, startPoint) > this._pathFixDistance)) {
                     finalPath.unshift(startPoint);
                 }
                 return finalPath
@@ -1004,7 +1069,7 @@ class PathFinding {
                         neighbours.push(endPoint);
                     }
 
-                // End point is not on corridor, therefore should be in the area
+                    // End point is not on corridor, therefore should be in the area
                 } else {
                     let unwrapped = this._unwrapLevelChangerPoint(point, endPoint.properties.level);
                     let allowedIntersections = 1;
@@ -1128,14 +1193,14 @@ class PathFinding {
 
             if (intersects) {
                 // if (allowedIntersections >= 1) {
-                    let midpoint = turf.midpoint(point.geometry.coordinates, proposedPoint.geometry.coordinates);
-                    for (let polIndex in this.floorData.get(point.properties.level).areas) {
-                        let area = this.floorData.get(point.properties.level).areas[polIndex];
-                        if (turf.booleanContains(area, midpoint)) {
-                            neighbours.push(proposedPoint);
-                            break;
-                        }
+                let midpoint = turf.midpoint(point.geometry.coordinates, proposedPoint.geometry.coordinates);
+                for (let polIndex in this.floorData.get(point.properties.level).areas) {
+                    let area = this.floorData.get(point.properties.level).areas[polIndex];
+                    if (turf.booleanContains(area, midpoint)) {
+                        neighbours.push(proposedPoint);
+                        break;
                     }
+                }
                 // } else {
                 //     neighbours.push(proposedPoint);
                 // }
@@ -1385,18 +1450,20 @@ class PathFinding {
      */
     _heuristic(pointA, pointB) {
         if (this._comparePointLevels(pointA, pointB)) {
-            return this._distance(pointA, pointB);
+            let penalty = pointA.properties.levels !== undefined || pointB.properties.levels !== undefined ? 20 : 0;
+            return this._distance(pointA, pointB) + penalty;
         } else {
             // Filter out direct level changers
             let directLevelChangerList = this.levelChangerList.filter(levelChanger => {
-                return levelChanger.properties.levels.includes(pointA.properties.level)
-                    && levelChanger.properties.levels.includes(pointB.properties.level)
+                return levelChanger !== pointA && levelChanger !== pointB
+                    && this._comparePointLevels(levelChanger, pointA)
+                    && this._comparePointLevels(levelChanger, pointB)
             });
 
             // Calculate best estimation for direct level change
             let bestDistance = Infinity;
             directLevelChangerList.forEach(levelChanger => {
-                let distance = this._distance(pointA, levelChanger) + this._distance(levelChanger, pointB);
+                let distance = this._distance(pointA, levelChanger) + this._distance(levelChanger, pointB) + 10;
                 if (distance < bestDistance) {
                     bestDistance = distance;
                 }
@@ -1406,23 +1473,28 @@ class PathFinding {
                 return bestDistance;
             }
 
-            // Filter out levelChangers available on pointA level and not previously tested direct levelChangers
-            let levelChangerList = this.levelChangerList
-                .filter(levelChanger => directLevelChangerList.indexOf(levelChanger) < 0)
-                .filter(levelChanger => levelChanger.properties.levels.includes(pointA.properties.level));
-            bestDistance = Infinity;
-            levelChangerList.forEach(levelChanger => {
-                let levelChangerPoint = this._copyPoint(levelChanger);
-                let levelChangerDistance = this._distance(pointA, levelChangerPoint);
-                levelChanger.properties.levels.forEach(i => {
-                    levelChangerPoint.properties.level = i;
-                    let distance = this._heuristic(levelChangerPoint, pointB);
-                    if (levelChangerDistance + distance < bestDistance) {
-                        bestDistance = levelChangerDistance + distance;
-                    }
-                });
-            });
-            return bestDistance;
+            // TODO we need to fix heuristic calculations
+//            // Filter out levelChangers available on pointA level and not previously tested direct levelChangers
+//            let levelChangerList = this.levelChangerList
+//                .filter(levelChanger => directLevelChangerList.indexOf(levelChanger) < 0)
+//                .filter(levelChanger => levelChanger.properties.levels.includes(pointA.properties.level))
+//                .filter(levelChanger => levelChanger !== pointA);
+//            bestDistance = Infinity;
+//            levelChangerList.forEach(levelChanger => {
+//                let levelChangerPoint = this._copyPoint(levelChanger);
+//                let levelChangerDistance = this._distance(pointA, levelChangerPoint);
+//                levelChanger.properties.levels.forEach(i => {
+//                    levelChangerPoint.properties.level = i;
+//                    let distance = this._heuristic(levelChangerPoint, pointB);
+//                    if (levelChangerDistance + distance < bestDistance) {
+//                        bestDistance = levelChangerDistance + distance;
+//                    }
+//                });
+//            });
+//            if (bestDistance < Infinity) {
+//                return bestDistance;
+//            }
+            return 2000;
         }
     }
 
@@ -1434,6 +1506,25 @@ class PathFinding {
      */
     _distance(pointA, pointB) {
         return turf.distance(pointA, pointB, {units:'meters'});
+    }
+
+    /**
+     *
+     * @private
+     */
+    _getFixEndPoint(endPoint, startPointLevel) {
+        // LC
+        if (endPoint.properties.levels !== undefined) {
+            let nearestLevel = undefined;
+            endPoint.properties.levels.forEach(level => {
+                if (nearestLevel === undefined || Math.abs(nearestLevel - startPointLevel) > Math.abs(level - startPointLevel)) {
+                    nearestLevel = level;
+                }
+            });
+            endPoint = this._copyPoint(endPoint);
+            endPoint.properties.level = nearestLevel;
+        }
+        return this._getFixPointInArea(endPoint);
     }
 
     _getFixPointInArea(point) {
@@ -1492,8 +1583,9 @@ class PathFinding {
                     fixedPoint.properties.neighbours = [];
                 }
                 fixedPoint.properties.neighbours.push(this.corridorLinePointPairs[bestCorridorIndex][0], this.corridorLinePointPairs[bestCorridorIndex][1]);
+                fixedPoint.properties.neighbours.push(...line.properties.intersectionPointList);
 
-            // Wall is closer
+                // Wall is closer
             } else if (bestWall !== null) {
 
                 // Create fixed point inside area
@@ -1517,9 +1609,11 @@ class PathFinding {
      */
     _copyPoint(pointFeature) {
         let point = turf.point([pointFeature.geometry.coordinates[0], pointFeature.geometry.coordinates[1]]);
-        if (pointFeature.properties.amenity != undefined) point.properties.amenity = pointFeature.properties.amenity
-        if (pointFeature.properties.type != undefined) point.properties.type = pointFeature.properties.type
-        return point
+        if (pointFeature.id != undefined) point.id = pointFeature.id;
+        if (pointFeature.properties.id != undefined) point.properties.id = pointFeature.properties.id;
+        if (pointFeature.properties.amenity != undefined) point.properties.amenity = pointFeature.properties.amenity;
+        if (pointFeature.properties.type != undefined) point.properties.type = pointFeature.properties.type;
+        return point;
     }
 
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '0.2.5'
+  s.version          = '0.3.0'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
@@ -28,19 +28,23 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '12.0'
 
+<<<<<<< HEAD
   s.dependency       'IndoorAtlas'
   s.dependency       'Proximiio'
   s.dependency       'Mapbox-iOS-SDK'
   s.dependency       'SwiftyJSON'
   s.dependency       'GRMustache.swift'
   s.dependency       'Speech'
+=======
+  s.dependency 'Proximiio'
+  s.dependency 'Mapbox-iOS-SDK'
+  s.dependency 'SwiftyJSON'
+  s.dependency 'GRMustache.swift'
+>>>>>>> beta
+
+  s.frameworks = 'UIKit', 'Network'
+
+  s.swift_version = '5.1'
 
   s.vendored_frameworks = 'ProximiioMapbox/ProximiioMapbox.framework'
-  # s.resource_bundles = {
-  #   'ProximiioMapbox' => ['ProximiioMapbox/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

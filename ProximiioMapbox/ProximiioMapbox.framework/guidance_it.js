@@ -5,20 +5,20 @@
     
     // Update turn instruction
 update_turn: "In {{distanceInt}} {{distanceUnit}} {{direction}}.",
-update_turn_left_hard: "turn hard left",
-update_turn_left: "turn left",
-update_turn_left_slight: "turn slight left",
-update_turn_straight: "continue straight",
-update_turn_right_slight: "turn slight right",
-update_turn_right: "turn right",
-update_turn_right_hard: "turn hard right",
-update_turn_around: "turn around",
-update_destination: "you will arrive at your destination",
+update_turn_left_hard: "gira molto a sinistra",
+update_turn_left: "gira a sinistra",
+update_turn_left_slight: "gira appena a sinistra",
+update_turn_straight: "continua dritto",
+update_turn_right_slight: "gira appena a destra",
+update_turn_right: "gira a destra",
+update_turn_right_hard: "gira molto a destra",
+update_turn_around: "inverti direzione",
+update_destination: "arriverai a destinazione",
     
     // Update level change instruction
 update_levelchange_elevator: "In {{distanceInt}} {{distanceUnit}} use the elevator to level {{levelTo}}.",
-update_levelchange_escalator: "In {{distanceInt}} {{distanceUnit}} use the escalator {{direction}}.",
-update_levelchange_stairs: "In {{distanceInt}} {{distanceUnit}} use the stairs {{direction}}.",
+update_levelchange_escalator: "In {{distanceInt}} {{distanceUnit}} use the escalator {{levelDirection}}.",
+update_levelchange_stairs: "In {{distanceInt}} {{distanceUnit}} use the stairs {{levelDirection}}.",
     
     /* ------------------------------------------------------------------------------------------ */
     /* Immediate update */
@@ -34,11 +34,15 @@ immediate_turn_right_hard: "Turn hard right.",
 immediate_turn_around: "Turn around.",
     
     // Immediate level change instruction
-immediate_levelchange_elevator: "Use the elevator to level {{levelTo}}.",
+    // {{distanceInt}}, {{distanceDec}}, {{distanceUnit}}, {{headingTo}}, {{headingDirection}}
+immediate_levelchange_elevator: "Use the elevator {{headingDirection}} to level {{levelTo}}.",
 immediate_levelchange_escalator: "Use the escalator {{direction}}.",
 immediate_levelchange_stairs: "Use the stairs {{direction}} to level {{levelTo}}.",
 direction_up: "up",
 direction_down: "down",
+immediate_levelchange_side_left: "on your left",
+immediate_levelchange_side_right: "on your right",
+immediate_levelchange_side_ahead: "ahead of you",
     
     /* ------------------------------------------------------------------------------------------ */
     /* Information about next step | used with Immediate instructions */
@@ -59,9 +63,9 @@ next_step_levelchanger_escalator: "Then in {{distanceInt}} {{distanceUnit}} you 
 next_step_levelchanger_stairs: "Then in {{distanceInt}} {{distanceUnit}} you will reach stairs.", // --||--
     
     // {{hours}}, {{degreesInt}}, {{degreesDec}}, {{levelchanger}}
-next_step_leave_levelchanger_elevator: "Exit the elevator on {{hours}} o'clock.",
-next_step_leave_levelchanger_escalator: "Exit the escalator on {{hours}} o'clock.",
-next_step_leave_levelchanger_stairs: "Exit the elevator on {{hours}} o'clock.",
+next_step_leave_levelchanger_elevator: "Exit elevator at {{exitHours}} o'clock and turn to {{nextStepHours}} o'clock.",
+next_step_leave_levelchanger_escalator: "",
+next_step_leave_levelchanger_stairs: "",
     
     /* ------------------------------------------------------------------------------------------ */
     /* Landmark passsing */
@@ -86,7 +90,14 @@ state_canceled: "Route canceled.",
     
     // Hazards
     // {{title}}
-hazard: "Watch out for {{title}}.",
+hazard: "Watch out for {{title}} {{side}}.",
+hazard_side_left: "on your left",
+hazard_side_right: "on your right",
+hazard_side_ahead: "ahead of you",
+    
+    // Decision
+    // {{title}}
+decision: "You are at {{title}}.",
     
     // Segments
     // {{title}}
@@ -96,7 +107,7 @@ segment_leave: "You are leaving {{title}}.",
     // Heading corrections
     // {{hours}}, {{degreesInt}}, {{degreesDec}}
 heading_correction: "Correct your heading to {{hours}} o'clock",
-heading_start: "Turn to {{hours}} o'clock.",
+heading_start: "Start route at your {{hours}} o'clock.",
     
     // Level quantity strings
 level: {
@@ -114,6 +125,14 @@ other: "levels"
     few: "meters",
     more: "meters",
     other: "meters"
+    },
+    
+    'units:step': {
+    one: "step",
+    two: "steps",
+    few: "steps",
+    more: "steps",
+    other: "steps"
     }
     
 }
