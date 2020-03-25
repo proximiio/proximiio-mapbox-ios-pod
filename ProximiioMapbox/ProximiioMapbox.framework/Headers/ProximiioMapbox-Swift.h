@@ -213,6 +213,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@class NSCoder;
+
+SWIFT_CLASS("_TtC15ProximiioMapbox13PIOAnnotation")
+@interface PIOAnnotation : MGLPointAnnotation
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 @interface PIOAudioManager : NSObject
@@ -232,7 +240,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 - (void)speechSynthesizer:(AVSpeechSynthesizer * _Nonnull)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance * _Nonnull)utterance;
 @end
 
-@class NSCoder;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteHeading")
 @interface PIORouteHeading : CLHeading
@@ -280,6 +287,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+
+
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
+@end
 
 
 
