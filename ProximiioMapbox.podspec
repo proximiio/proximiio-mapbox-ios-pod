@@ -32,6 +32,7 @@ TODO: Add long description of the pod here.
   s.dependency 'Mapbox-iOS-SDK'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
+  s.dependency 'Alamofire'
 
   s.frameworks = 'UIKit', 'Network'
 
