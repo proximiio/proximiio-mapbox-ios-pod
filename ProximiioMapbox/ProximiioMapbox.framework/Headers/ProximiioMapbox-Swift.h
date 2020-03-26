@@ -287,11 +287,16 @@ SWIFT_CLASS("_TtC15ProximiioMapbox18PIORouteUpdateData")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, PIORouteUpdateDirectionType, closed) {
-  PIORouteUpdateDirectionTypeNew = 0,
-  PIORouteUpdateDirectionTypeUpdate = 1,
-  PIORouteUpdateDirectionTypeSoon = 2,
-  PIORouteUpdateDirectionTypeImmediate = 3,
+typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, closed) {
+  PIORouteUpdateTypeCalculating = 0,
+  PIORouteUpdateTypeRecalculating = 1,
+  PIORouteUpdateTypeRouteNotfound = 2,
+  PIORouteUpdateTypeCanceled = 3,
+  PIORouteUpdateTypeFinished = 4,
+  PIORouteUpdateTypeNew = 5,
+  PIORouteUpdateTypeUpdate = 6,
+  PIORouteUpdateTypeSoon = 7,
+  PIORouteUpdateTypeImmediate = 8,
 };
 
 
@@ -392,6 +397,17 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox26ProximiioMapboxInteraction_")
 - (void)changeWithFloor:(NSInteger)floor;
 - (void)onTapWithFeature:(ProximiioGeoJSON * _Nonnull)feature;
 - (void)onRequestReRoute;
+@end
+
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox25ProximiioMapboxNavigation_")
+@protocol ProximiioMapboxNavigation
+- (void)onRouteWithRoute:(PIORoute * _Nullable)route;
+- (void)routeEventWithEventType:(enum PIORouteUpdateType)type text:(NSString * _Nonnull)text additionalText:(NSString * _Nullable)additionalText data:(PIORouteUpdateData * _Nullable)data;
+- (void)onHazardEntered:(ProximiioGeoJSON * _Nonnull)hazard;
+- (void)onSegmentEntered:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)onPositionUpdate:(CLLocationCoordinate2D)position;
+- (void)onHeadingUpdate:(double)heading;
 @end
 
 typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, closed) {
