@@ -9,7 +9,8 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+Edit `Constant.swift` file adding your Proximi.io app token and then proceed building.
+
 
 ## Installation
 
@@ -17,12 +18,13 @@ ProximiioMapbox is available through [CocoaPods](https://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 
 ```ruby
+pod 'Proximiio'
 pod 'ProximiioMapbox'
 ```
 
 ## Author
 
-x-oauth-basic, matej.drzik@quanto.sk
+Proximi.io
 
 ## License
 
