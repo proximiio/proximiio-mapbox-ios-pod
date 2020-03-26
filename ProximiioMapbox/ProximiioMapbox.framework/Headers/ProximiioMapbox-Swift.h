@@ -306,6 +306,7 @@ typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, closed) {
 
 
 @protocol ProximiioMapboxInteraction;
+@protocol ProximiioMapboxNavigation;
 @class MGLMapView;
 @class ProximiioLocation;
 @class ProximiioFloor;
@@ -316,6 +317,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @interface ProximiioMapbox : NSObject <NSURLSessionDelegate>
 @property (nonatomic) BOOL shakyHandsMode;
 @property (nonatomic, weak) id <ProximiioMapboxInteraction> _Nullable mapInteraction;
+@property (nonatomic, weak) id <ProximiioMapboxNavigation> _Nullable mapNavigation;
 @property (nonatomic, weak) MGLMapView * _Nullable mapView;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
