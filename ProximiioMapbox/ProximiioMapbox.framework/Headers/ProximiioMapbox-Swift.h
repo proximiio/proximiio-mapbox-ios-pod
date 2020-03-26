@@ -362,6 +362,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)routeFindFrom:(ProximiioGeoJSON * _Nonnull)from to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute;
 - (void)routeFindTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
 - (void)routeFindAndStartTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
 - (void)routeFindAndPreviewTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
