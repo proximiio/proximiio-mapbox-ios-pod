@@ -280,7 +280,7 @@ extension ViewController: ProximiioMapboxInteraction {
         options.avoidBarriers = true
         
         /// show route to a poi
-        mapBoxHelper?.routeFind(to: feature, options: options)
+        mapBoxHelper?.routeFindAndStart(to: feature, options: options)
     }
     
     func onRequestReRoute() {
