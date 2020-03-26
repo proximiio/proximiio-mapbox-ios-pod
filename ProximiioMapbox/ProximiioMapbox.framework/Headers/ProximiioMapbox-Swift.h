@@ -246,6 +246,13 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 @end
 
 
+SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
+@interface PIORoute : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteHeading")
 @interface PIORouteHeading : CLHeading
 @property (nonatomic) CLLocationDirection magneticHeading;
@@ -261,6 +268,12 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteHeading")
 @end
 
 
+SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
+@interface PIORouteOptions : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 
 
@@ -269,6 +282,8 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteHeading")
 @class ProximiioLocation;
 @class ProximiioFloor;
 @class ProximiioMapboxConfiguration;
+enum ProximiioMapboxAuthorizationResult : NSInteger;
+@class MGLMapView;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @interface ProximiioMapbox : NSObject <NSURLSessionDelegate>
@@ -276,10 +291,17 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
+/// manage the follow heading replacing the one provided by mapbox
+@property (nonatomic) BOOL followingUser;
+- (void)routeWithDestination:(ProximiioGeoJSON * _Nonnull)destination preview:(BOOL)preview options:(PIORouteOptions * _Nullable)options;
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
+- (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
+- (nonnull instancetype)initWithMapView:(MGLMapView * _Nullable)mapView configuration:(ProximiioMapboxConfiguration * _Nonnull)configuration apiVersion:(NSString * _Nonnull)apiVersion OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
 
 
 
@@ -300,8 +322,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
-
-
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)setLevelWithLevel:(NSInteger)level;
 @end
@@ -309,6 +329,15 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)routeFindTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
+- (void)routeFindAndStartTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
+- (void)routeFindAndPreviewTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
+- (void)routeStart:(PIORoute * _Nullable)route;
+- (void)routeCancelWithSilent:(BOOL)silent;
+- (void)routePreview:(PIORoute * _Nullable)route;
+- (void)repeatLastInstruction;
+@end
 
 typedef SWIFT_ENUM(NSInteger, ProximiioMapboxAuthorizationResult, closed) {
   ProximiioMapboxAuthorizationResultSuccess = 0,
