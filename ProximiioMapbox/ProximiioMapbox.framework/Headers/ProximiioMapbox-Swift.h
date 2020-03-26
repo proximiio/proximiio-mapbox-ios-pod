@@ -246,6 +246,13 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 @end
 
 
+SWIFT_CLASS("_TtC15ProximiioMapbox10PIOHeading")
+@interface PIOHeading : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 @interface PIORoute : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -274,19 +281,37 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
 @end
 
 
+SWIFT_CLASS("_TtC15ProximiioMapbox18PIORouteUpdateData")
+@interface PIORouteUpdateData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, PIORouteUpdateDirectionType, closed) {
+  PIORouteUpdateDirectionTypeNew = 0,
+  PIORouteUpdateDirectionTypeUpdate = 1,
+  PIORouteUpdateDirectionTypeSoon = 2,
+  PIORouteUpdateDirectionTypeImmediate = 3,
+};
 
 
 
 
 
+
+
+@protocol ProximiioMapboxInteraction;
+@class MGLMapView;
 @class ProximiioLocation;
 @class ProximiioFloor;
 @class ProximiioMapboxConfiguration;
 enum ProximiioMapboxAuthorizationResult : NSInteger;
-@class MGLMapView;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @interface ProximiioMapbox : NSObject <NSURLSessionDelegate>
+@property (nonatomic) BOOL shakyHandsMode;
+@property (nonatomic, weak) id <ProximiioMapboxInteraction> _Nullable mapInteraction;
+@property (nonatomic, weak) MGLMapView * _Nullable mapView;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, strong) ProximiioFloor * _Nullable userFloor;
@@ -314,10 +339,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
-
-
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
+
+
 
 
 
@@ -359,6 +384,14 @@ SWIFT_CLASS("_TtC15ProximiioMapbox28ProximiioMapboxConfiguration")
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox26ProximiioMapboxInteraction_")
+@protocol ProximiioMapboxInteraction
+- (void)changeWithFloor:(NSInteger)floor;
+- (void)onTapWithFeature:(ProximiioGeoJSON * _Nonnull)feature;
+- (void)onRequestReRoute;
 @end
 
 typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, closed) {
