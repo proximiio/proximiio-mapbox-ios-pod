@@ -230,6 +230,12 @@ extension ViewController: ProximiioDelegate {
 
 // MARK: ProximiioMapbox Navigation Delegate
 extension ViewController: ProximiioMapboxNavigation {
+    func onDecisionEntered(_ decision: ProximiioGeoJSON) {
+    }
+    
+    func onLandmarkEntered(_ landmarks: [PIOLandmark]) {
+    }
+    
     func onRoute(route: PIORoute?) {
         // triggered if a route has been found
     }
