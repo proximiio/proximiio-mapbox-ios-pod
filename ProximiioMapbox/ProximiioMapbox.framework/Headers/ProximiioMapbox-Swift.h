@@ -250,6 +250,8 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 
 SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
 @interface PIODatabase : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIODatabase * _Nonnull shared;)
++ (PIODatabase * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @property (nonatomic, readonly, copy) NSArray<ProximiioAmenity *> * _Nonnull amenities;
@@ -260,12 +262,52 @@ SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
 @property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull poisAndLevelChanger;
 @end
 
+typedef SWIFT_ENUM(NSInteger, PIOGuidanceDirection, closed) {
+  PIOGuidanceDirectionNone = 0,
+  PIOGuidanceDirectionStart = 1,
+  PIOGuidanceDirectionTurnAround = 2,
+  PIOGuidanceDirectionFinish = 3,
+  PIOGuidanceDirectionStraight = 4,
+/// turn types
+  PIOGuidanceDirectionLeftSlight = 5,
+/// turn types
+  PIOGuidanceDirectionLeftNormal = 6,
+/// turn types
+  PIOGuidanceDirectionLeftHard = 7,
+  PIOGuidanceDirectionRightSlight = 8,
+  PIOGuidanceDirectionRightNormal = 9,
+  PIOGuidanceDirectionRightHard = 10,
+/// level change
+  PIOGuidanceDirectionUpElevator = 11,
+/// level change
+  PIOGuidanceDirectionUpEscalator = 12,
+/// level change
+  PIOGuidanceDirectionUpStairs = 13,
+  PIOGuidanceDirectionDownElevator = 14,
+  PIOGuidanceDirectionDownEscalator = 15,
+  PIOGuidanceDirectionDownStairs = 16,
+};
+
 
 SWIFT_CLASS("_TtC15ProximiioMapbox10PIOHeading")
 @interface PIOHeading : NSObject
+@property (nonatomic, copy) NSString * _Nonnull text;
+@property (nonatomic) double rotation;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
+SWIFT_CLASS("_TtC15ProximiioMapbox11PIOLandmark")
+@interface PIOLandmark : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, PIOLandmarkSide, closed) {
+  PIOLandmarkSideLeft = 0,
+  PIOLandmarkSideRight = 1,
+};
 
 
 SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
@@ -295,9 +337,20 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSNumber;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox18PIORouteUpdateData")
 @interface PIORouteUpdateData : NSObject
+@property (nonatomic) NSInteger nodeIndex;
+@property (nonatomic) double stepBearing;
+@property (nonatomic) enum PIOGuidanceDirection stepDirection;
+@property (nonatomic) double stepDistance;
+@property (nonatomic, strong) NSNumber * _Nullable nextStepBearing;
+@property (nonatomic, strong) NSNumber * _Nullable nextStepDistance;
+@property (nonatomic) enum PIOGuidanceDirection nextStepDirection;
+@property (nonatomic) CLLocationCoordinate2D position;
+@property (nonatomic) double pathLengthRemaining;
+@property (nonatomic, readonly, strong) PIOHeading * _Nonnull stepHeading;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -362,10 +415,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
-
-
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
+
+
 
 
 
@@ -379,6 +432,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)routeFindFrom:(ProximiioGeoJSON * _Nonnull)from to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute;
+- (void)routeFindFrom:(CLLocation * _Nonnull)from level:(NSInteger)level to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute;
 - (void)routeFindTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
 - (void)routeFindAndStartTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
 - (void)routeFindAndPreviewTo:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options;
@@ -425,6 +479,8 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox25ProximiioMapboxNavigation_")
 - (void)routeEventWithEventType:(enum PIORouteUpdateType)type text:(NSString * _Nonnull)text additionalText:(NSString * _Nullable)additionalText data:(PIORouteUpdateData * _Nullable)data;
 - (void)onHazardEntered:(ProximiioGeoJSON * _Nonnull)hazard;
 - (void)onSegmentEntered:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)onDecisionEntered:(ProximiioGeoJSON * _Nonnull)decision;
+- (void)onLandmarkEntered:(NSArray<PIOLandmark *> * _Nonnull)landmarks;
 - (void)onPositionUpdate:(CLLocationCoordinate2D)position;
 - (void)onHeadingUpdate:(double)heading;
 @end
