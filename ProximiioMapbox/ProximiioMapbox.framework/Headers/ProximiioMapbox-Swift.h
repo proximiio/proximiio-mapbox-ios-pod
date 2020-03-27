@@ -411,6 +411,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
+- (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
+@end
 
 
 
@@ -421,6 +425,11 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)floorUp;
+- (void)floorDown;
+- (void)floorAt:(NSInteger)floor;
+@end
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
