@@ -245,6 +245,21 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 - (void)speechSynthesizer:(AVSpeechSynthesizer * _Nonnull)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance * _Nonnull)utterance;
 @end
 
+@class ProximiioAmenity;
+@class ProximiioGeoJSON;
+
+SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
+@interface PIODatabase : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@property (nonatomic, readonly, copy) NSArray<ProximiioAmenity *> * _Nonnull amenities;
+@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull features;
+/// POI, are subset of feature
+@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull pois;
+/// POI, are subset of feature
+@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull poisAndLevelChanger;
+@end
+
 
 SWIFT_CLASS("_TtC15ProximiioMapbox10PIOHeading")
 @interface PIOHeading : NSObject
@@ -323,6 +338,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
+@property (nonatomic, strong) PIODatabase * _Nonnull database;
 /// manage the follow heading replacing the one provided by mapbox
 @property (nonatomic) BOOL followingUser;
 - (void)routeWithDestination:(ProximiioGeoJSON * _Nonnull)destination preview:(BOOL)preview options:(PIORouteOptions * _Nullable)options;
@@ -346,10 +362,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
-
-
 
 
 

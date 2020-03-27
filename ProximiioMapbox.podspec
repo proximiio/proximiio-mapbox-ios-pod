@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '0.4.6'
+  s.version          = '0.4.7'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
