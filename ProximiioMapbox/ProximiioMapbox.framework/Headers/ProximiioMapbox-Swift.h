@@ -261,6 +261,21 @@ SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
 @property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull poisAndLevelChanger;
 @end
 
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox19PIODecisionCallback_")
+@protocol PIODecisionCallback
+- (void)decisionEnteredWithSegment:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)decisionExitedWithSegment:(ProximiioGeoJSON * _Nonnull)segment;
+@end
+
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox9PIOFilter_")
+@protocol PIOFilter
+- (NSString * _Nonnull)filterTag SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<NSString *> * _Nonnull)inputNames SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)filterItemWithFeature:(ProximiioGeoJSON * _Nonnull)feature input:(NSArray<NSString *> * _Nonnull)input SWIFT_WARN_UNUSED_RESULT;
+@end
+
 typedef SWIFT_ENUM(NSInteger, PIOGuidanceDirection, closed) {
   PIOGuidanceDirectionNone = 0,
   PIOGuidanceDirectionStart = 1,
@@ -288,6 +303,13 @@ typedef SWIFT_ENUM(NSInteger, PIOGuidanceDirection, closed) {
 };
 
 
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox17PIOHazardCallback_")
+@protocol PIOHazardCallback
+- (void)enteredHazardRangeWithHazard:(ProximiioGeoJSON * _Nonnull)hazard;
+- (void)exitedHazardRangeWithHazard:(ProximiioGeoJSON * _Nonnull)hazard;
+@end
+
+
 SWIFT_CLASS("_TtC15ProximiioMapbox10PIOHeading")
 @interface PIOHeading : NSObject
 @property (nonatomic, copy) NSString * _Nonnull text;
@@ -297,16 +319,71 @@ SWIFT_CLASS("_TtC15ProximiioMapbox10PIOHeading")
 @end
 
 
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox28PIOHeadingCorrectionCallback_")
+@protocol PIOHeadingCorrectionCallback
+- (void)onHeadingCorrectionWithDegress:(double)degress;
+@end
+
+
 SWIFT_CLASS("_TtC15ProximiioMapbox11PIOLandmark")
 @interface PIOLandmark : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox19PIOLandmarkCallback_")
+@protocol PIOLandmarkCallback
+- (void)onLandmarkEnteredRangeWithLandmarkList:(NSArray<PIOLandmark *> * _Nonnull)landmarkList;
+- (void)onLandmarkExitedRangeWithLandmarkList:(NSArray<ProximiioGeoJSON *> * _Nonnull)landmarkList;
+@end
+
 typedef SWIFT_ENUM(NSInteger, PIOLandmarkSide, closed) {
   PIOLandmarkSideLeft = 0,
   PIOLandmarkSideRight = 1,
 };
+
+@protocol PIOSegmentCallback;
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox21PIONavigationDelegate_")
+@protocol PIONavigationDelegate
+- (void)setStepImmediateThresholdInMeters:(double)threshold;
+- (void)setStepPreparationThresholdInMeters:(double)threshold;
+- (void)setRouteFinishThresholdInMeters:(double)threshold;
+- (void)setReRoutingInMeters:(double)threshold;
+- (void)setReRoutingWithAutomatic:(BOOL)automatic;
+- (void)setUnitConversionWithUnitName:(NSString * _Nonnull)name conversionCoefficiente:(double)coefficient;
+- (void)hazardCallbackWithCallback:(id <PIOHazardCallback> _Nullable)callback;
+- (void)segmentCallbackWithCallback:(id <PIOSegmentCallback> _Nullable)callback;
+- (void)decisionCallbackWithCallback:(id <PIODecisionCallback> _Nullable)callback;
+- (void)headingCorrectionCallbackWithCallback:(id <PIOHeadingCorrectionCallback> _Nullable)callback;
+- (void)landmarksCallbackWithCallback:(id <PIOLandmarkCallback> _Nullable)callback;
+- (void)ttsEnableWithEnable:(BOOL)enable;
+- (void)ttsDisable;
+- (void)ttsHazardAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsSegmentAlertWithEnterEnabled:(BOOL)enterEnabled exitEnabled:(BOOL)exitEnabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsDecisionAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsLevelChangerMetadataKeysWithMetadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsHeadingCorrectionWithEnabled:(BOOL)enabled;
+- (void)ttsHeadingCorrectionThresholdWithMeters:(double)meters degrees:(double)degrees;
+- (void)ttsLandmarkAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsMetadataKeysWithIndexes:(NSArray<NSNumber *> * _Nonnull)indexes;
+- (void)ttsRepeatLastInstruction;
+- (void)ttsReassuranceInstructionWithEnabled:(BOOL)enabled;
+- (void)ttsReassuranceInstructionWithDistance:(double)distance;
+- (void)ttsSoonUpdateThresholdWithThresholdMeters:(double)thresholdMeters;
+- (void)routeCancelWithSilent:(BOOL)silent;
+- (BOOL)routePreview SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)routeStart SWIFT_WARN_UNUSED_RESULT;
+- (void)processUserLocation:(CLLocationCoordinate2D)position force:(BOOL)force;
+- (void)updateUserLevelWithLevel:(NSInteger)level;
+@end
+
+
+SWIFT_CLASS("_TtC15ProximiioMapbox15PIOReachability")
+@interface PIOReachability : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 @class PIORouteNode;
 
@@ -319,6 +396,19 @@ SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 - (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringListFromStart:(NSInteger)start point:(CLLocationCoordinate2D)point SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum PIORouteUpdateType : NSInteger;
+@class PIORouteUpdateData;
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox16PIORouteDelegate_")
+@protocol PIORouteDelegate
+- (void)onRouteWithRoute:(PIORoute * _Nullable)route;
+- (void)routeEventWithEventType:(enum PIORouteUpdateType)type text:(NSString * _Nonnull)text additionalText:(NSString * _Nullable)additionalText data:(PIORouteUpdateData * _Nullable)data;
+- (void)onHazardEntered:(ProximiioGeoJSON * _Nonnull)hazard;
+- (void)onSegmentEntered:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)onDecisionEntered:(ProximiioGeoJSON * _Nonnull)decision;
+- (void)onLandmarkEntered:(NSArray<PIOLandmark *> * _Nonnull)landmark;
 @end
 
 
@@ -397,6 +487,41 @@ typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, closed) {
 };
 
 
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox18PIOSegmentCallback_")
+@protocol PIOSegmentCallback
+- (void)onSegmentEnteredWithSegment:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)onSegmentLeftWithSegment:(ProximiioGeoJSON * _Nonnull)segment;
+@end
+
+
+SWIFT_CLASS("_TtC15ProximiioMapbox12PIOTelemetry")
+@interface PIOTelemetry : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOTelemetry * _Nonnull shared;)
++ (PIOTelemetry * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) BOOL isActive;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP15ProximiioMapbox20PIOTelemetryProtocol_")
+@protocol PIOTelemetryProtocol
+@property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+- (NSDictionary<NSString *, id> * _Nonnull)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC15ProximiioMapbox12PIOWayfinder")
+@interface PIOWayfinder : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder * _Nonnull shared;)
++ (PIOWayfinder * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (PIORoute * _Nullable)findRouteFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList telemetry:(BOOL)telemetry SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<ProximiioGeoJSON *> * _Nullable)findPathWithStartLatitude:(double)startLatitude startLongitude:(double)startLongitude startLevel:(NSInteger)startLevel endLatitude:(double)endLatitude endLongitude:(double)endLongitude endLevel:(NSInteger)endLevel routeOptions:(PIORouteOptions * _Nonnull)routeOptions featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 
 
 
@@ -466,6 +591,14 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @end
 
 
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <PIORouteDelegate>
+- (void)onDecisionEntered:(ProximiioGeoJSON * _Nonnull)decision;
+- (void)onLandmarkEntered:(NSArray<PIOLandmark *> * _Nonnull)landmarks;
+- (void)onHazardEntered:(ProximiioGeoJSON * _Nonnull)hazard;
+- (void)onSegmentEntered:(ProximiioGeoJSON * _Nonnull)segment;
+- (void)onRouteWithRoute:(PIORoute * _Nullable)route;
+- (void)routeEventWithEventType:(enum PIORouteUpdateType)type text:(NSString * _Nonnull)text additionalText:(NSString * _Nullable)additionalText data:(PIORouteUpdateData * _Nullable)data;
+@end
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
