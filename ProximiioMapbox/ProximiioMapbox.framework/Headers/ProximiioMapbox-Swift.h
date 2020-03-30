@@ -308,9 +308,15 @@ typedef SWIFT_ENUM(NSInteger, PIOLandmarkSide, closed) {
   PIOLandmarkSideRight = 1,
 };
 
+@class PIORouteNode;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 @interface PIORoute : NSObject
+@property (nonatomic, strong) ProximiioGeoJSON * _Nonnull destination;
+@property (nonatomic) BOOL isPreview;
+@property (nonatomic, readonly, copy) NSArray<PIORouteNode *> * _Nonnull nodeList;
+- (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringFeatureList SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringListFromStart:(NSInteger)start point:(CLLocationCoordinate2D)point SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -331,8 +337,32 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteHeading")
 @end
 
 
+SWIFT_CLASS("_TtC15ProximiioMapbox12PIORouteNode")
+@interface PIORouteNode : NSObject
+@property (nonatomic) double bearingFromLastNode;
+@property (nonatomic, strong) CLLocation * _Nonnull coordinates;
+@property (nonatomic) enum PIOGuidanceDirection direction;
+@property (nonatomic) double distanceFromLastNode;
+@property (nonatomic) NSInteger level;
+@property (nonatomic, copy) NSString * _Nullable levelChangerId;
+@property (nonatomic, strong) ProximiioGeoJSON * _Nullable lineStringFeatureTo;
+@property (nonatomic, copy) NSArray<NSValue *> * _Nonnull lineStringCoordinates;
+@property (nonatomic, readonly, copy) NSString * _Nonnull text;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
 @interface PIORouteOptions : NSObject
+@property (nonatomic) BOOL avoidBarriers;
+@property (nonatomic) BOOL avoidElevators;
+@property (nonatomic) BOOL avoidEscalators;
+@property (nonatomic) BOOL avoidNarrowPaths;
+@property (nonatomic) BOOL avoidRamps;
+@property (nonatomic) BOOL avoidRevolvingDoors;
+@property (nonatomic) BOOL avoidStairs;
+@property (nonatomic) BOOL avoidTicketGates;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -418,10 +448,10 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
-
-
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
