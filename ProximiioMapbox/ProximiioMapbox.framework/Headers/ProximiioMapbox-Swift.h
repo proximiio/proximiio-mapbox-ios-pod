@@ -467,6 +467,9 @@ SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 @end
 
 
+@interface PIORoute (SWIFT_EXTENSION(ProximiioMapbox))
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull summary;
+@end
 
 enum PIORouteUpdateType : NSInteger;
 @class PIORouteUpdateData;
