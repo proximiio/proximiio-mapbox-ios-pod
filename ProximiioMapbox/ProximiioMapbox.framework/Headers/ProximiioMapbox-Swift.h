@@ -255,12 +255,11 @@ SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (PIODatabase * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, readonly, copy) NSArray<ProximiioAmenity *> * _Nonnull amenities;
-@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull features;
-/// POI, are subset of feature
-@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull pois;
-/// POI, are subset of feature
-@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull poisAndLevelChanger;
+- (NSArray<ProximiioAmenity *> * _Nonnull)amenities SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull _featuresDb;
+- (NSArray<ProximiioGeoJSON *> * _Nonnull)features SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<ProximiioGeoJSON *> * _Nonnull)pois SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<ProximiioGeoJSON *> * _Nonnull)poisAndLevelChanger SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -426,7 +425,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox13PIONavigation")
 @property (nonatomic, copy) NSArray<ProximiioGeoJSON *> * _Nonnull remainingRoute;
 @property (nonatomic, strong) ProximiioPointOnLine * _Nullable closestPointToRoute;
 @property (nonatomic, weak) id <PIORouteDelegate> _Nullable routeDelegate;
-- (void)routeFindFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList;
+- (void)routeFindFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList isReRouting:(BOOL)isReRouting;
 - (void)routeCancelWithSilent:(BOOL)silent;
 - (BOOL)routePreview SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)routeStart SWIFT_WARN_UNUSED_RESULT;
@@ -594,7 +593,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder
 + (PIOWayfinder * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (PIORoute * _Nullable)findRouteFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList telemetry:(BOOL)telemetry SWIFT_WARN_UNUSED_RESULT;
+- (PIORoute * _Nullable)findRouteFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList telemetry:(BOOL)telemetry isReRouting:(BOOL)isReRouting SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<ProximiioGeoJSON *> * _Nullable)findPathWithStartLatitude:(double)startLatitude startLongitude:(double)startLongitude startLevel:(NSInteger)startLevel endLatitude:(double)endLatitude endLongitude:(double)endLongitude endLevel:(NSInteger)endLevel routeOptions:(PIORouteOptions * _Nonnull)routeOptions featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -637,13 +636,9 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
-
-
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <PIONavigationRouting>
 - (void)onRequestReRoute;
 @end
-
-
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
@@ -654,8 +649,12 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
+
+
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
@@ -724,6 +723,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox26ProximiioMapboxInteraction_")
 - (void)changeWithFloor:(NSInteger)floor;
 - (void)onTapWithFeature:(ProximiioGeoJSON * _Nonnull)feature;
 - (void)onRequestReRoute;
+- (void)onFollowingUserUpdate:(BOOL)isFollowing;
 @end
 
 
