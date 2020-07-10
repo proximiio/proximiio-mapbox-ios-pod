@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '5.0.11'
+  s.version          = '5.0.12'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/proximiio/proximiio-mapbox-ios-pod'
+  s.homepage         = 'https://github.com/proximiio/proximiio-mapbox-ios-pod.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'x-oauth-basic' => 'matej.drzik@quanto.sk' }
-  s.source           = { :git => 'https://github.com/proximiio/proximiio-mapbox-ios-pod', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/proximiio/proximiio-mapbox-ios-pod.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '12.0'
 
