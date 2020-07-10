@@ -38,5 +38,5 @@ TODO: Add long description of the pod here.
 
   s.swift_version = '5.2'
 
-  s.vendored_frameworks = 'ProximiioMapbox.framework'
+  s.vendored_frameworks = 'Pod/ProximiioMapbox.framework'
 end
