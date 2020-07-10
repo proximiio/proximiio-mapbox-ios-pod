@@ -470,6 +470,7 @@ class Wayfinding {
                 fixedPoint.properties.direction = levelChanger.properties.direction;
                 fixedPoint.properties.id = levelChanger.properties.id;
                 fixedPoint.properties.level = level;
+                fixedPoint.properties.type = levelChanger.properties.type;
                 if (fixedPoint.properties.neighbours === undefined) fixedPoint.properties.neighbours = [];
 
                 // Do not fix level changers that are further than 5 meters from any path or area

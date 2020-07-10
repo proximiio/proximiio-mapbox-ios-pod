@@ -423,6 +423,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox13PIONavigation")
 @property (nonatomic, strong) PIORoute * _Nullable route;
 @property (nonatomic) NSInteger routeLastNodeIndex;
 @property (nonatomic, copy) NSArray<ProximiioGeoJSON *> * _Nonnull remainingRoute;
+@property (nonatomic, copy) NSArray<ProximiioGeoJSON *> * _Nonnull completedRoute;
 @property (nonatomic, strong) ProximiioPointOnLine * _Nullable closestPointToRoute;
 @property (nonatomic, weak) id <PIORouteDelegate> _Nullable routeDelegate;
 - (void)routeFindFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options previewRoute:(BOOL)previewRoute startRoute:(BOOL)startRoute featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList isReRouting:(BOOL)isReRouting;
@@ -618,7 +619,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @property (nonatomic, weak) MGLMapView * _Nullable mapView;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
-@property (nonatomic, strong) ProximiioFloor * _Nullable userFloor;
+@property (nonatomic, readonly, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
 @property (nonatomic, strong) PIODatabase * _Nonnull database;
 /// manage the follow heading replacing the one provided by mapbox
