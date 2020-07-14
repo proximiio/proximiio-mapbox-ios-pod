@@ -604,10 +604,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder
 
 
 
+
+
 @protocol ProximiioMapboxInteraction;
 @protocol ProximiioMapboxNavigation;
 @class ProximiioLocation;
-@class ProximiioFloor;
 @class ProximiioMapboxConfiguration;
 enum ProximiioMapboxAuthorizationResult : NSInteger;
 
@@ -642,12 +643,12 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 @end
 
 
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
 - (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
 @end
-
-
 
 
 
