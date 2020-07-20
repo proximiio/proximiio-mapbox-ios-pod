@@ -459,12 +459,14 @@ SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 @interface PIORoute : NSObject
 @property (nonatomic, strong) ProximiioGeoJSON * _Nonnull destination;
 @property (nonatomic) BOOL isPreview;
-@property (nonatomic, readonly, copy) NSArray<PIORouteNode *> * _Nonnull nodeList;
+@property (nonatomic, copy) NSArray<PIORouteNode *> * _Nonnull nodeList;
 - (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringFeatureList SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringListFromStart:(NSInteger)start point:(CLLocationCoordinate2D)point SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
 
 
 @interface PIORoute (SWIFT_EXTENSION(ProximiioMapbox))
@@ -514,7 +516,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox12PIORouteNode")
 @property (nonatomic, copy) NSString * _Nullable levelChangerId;
 @property (nonatomic, strong) ProximiioGeoJSON * _Nullable lineStringFeatureTo;
 @property (nonatomic, copy) NSArray<NSValue *> * _Nonnull lineStringCoordinates;
-@property (nonatomic, readonly, copy) NSString * _Nonnull text;
+@property (nonatomic, copy) NSString * _Nonnull text;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -645,6 +647,8 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 
 
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
 - (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
@@ -655,8 +659,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
-
-
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
