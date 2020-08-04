@@ -399,7 +399,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox13PIONavigation")
 - (void)setRouteFinishThresholdInMeters:(double)threshold;
 - (void)setReRoutingInMeters:(double)threshold;
 - (void)setReRoutingWithAutomatic:(BOOL)automatic;
-- (void)setMapboxMapWithMapboxMap:(MGLMapView * _Nonnull)mapboxMap;
+- (void)setMapboxMapWithMapboxMap:(MGLMapView * _Nullable)mapboxMap;
 - (void)setUnitConversionWithUnitName:(NSString * _Nonnull)name conversionCoefficiente:(double)coefficient;
 - (void)hazardCallbackWithCallback:(id <PIOHazardCallback> _Nullable)callback;
 - (void)segmentCallbackWithCallback:(id <PIOSegmentCallback> _Nullable)callback;
@@ -630,6 +630,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15ProximiioMapbox")
 - (void)routeWithDestination:(ProximiioGeoJSON * _Nonnull)destination preview:(BOOL)preview options:(PIORouteOptions * _Nullable)options;
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
 - (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
+- (void)enableNavigation:(MGLMapView * _Nullable)mapView;
 - (nonnull instancetype)initWithMapView:(MGLMapView * _Nullable)mapView configuration:(ProximiioMapboxConfiguration * _Nonnull)configuration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
