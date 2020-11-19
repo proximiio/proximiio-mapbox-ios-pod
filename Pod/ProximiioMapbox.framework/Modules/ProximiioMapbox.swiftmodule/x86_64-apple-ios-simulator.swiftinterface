@@ -1,0 +1,666 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ProximiioMapbox
+import AVFoundation
+import Alamofire
+import CoreLocation
+import CrystDBCipher
+import Foundation
+import JavaScriptCore
+import MapKit
+import Mapbox
+import Mustache
+import Network
+import Proximiio
+@_exported import ProximiioMapbox
+import Speech
+import Swift
+import SwiftyJSON
+import SystemConfiguration
+import UIKit
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PIODatabase : ObjectiveC.NSObject {
+  @objc public class func sharedInstance() -> ProximiioMapbox.PIODatabase
+  @objc public func amenities() -> [Proximiio.ProximiioAmenity]
+  @objc public var _featuresDb: [Proximiio.ProximiioGeoJSON] {
+    @objc get
+  }
+  @objc public func features() -> [Proximiio.ProximiioGeoJSON]
+  @objc public func pois() -> [Proximiio.ProximiioGeoJSON]
+  @objc public func poisAndLevelChanger() -> [Proximiio.ProximiioGeoJSON]
+  public func features(search: Swift.String..., userLocation: CoreLocation.CLLocationCoordinate2D? = nil) -> [Proximiio.ProximiioGeoJSON]
+  public func features(filter: ProximiioMapbox.PIOFilter, search: Swift.String...) -> [Proximiio.ProximiioGeoJSON]
+  public func features(filter: ProximiioMapbox.PIOFilter, search: [Swift.String]) -> [Proximiio.ProximiioGeoJSON]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class PIORoute : ObjectiveC.NSObject {
+  @objc public var from: CoreLocation.CLLocationCoordinate2D
+  @objc public var fromLevel: Swift.Int
+  @objc public var destination: Proximiio.ProximiioGeoJSON
+  @objc public var options: ProximiioMapbox.PIORouteOptions
+  @objc public var isPreview: Swift.Bool
+  @objc public var nodeList: [ProximiioMapbox.PIORouteNode]
+  @objc public func getLineStringFeatureList() -> [Proximiio.ProximiioGeoJSON]
+  public func getRoutePaths(position: CoreLocation.CLLocationCoordinate2D?, index: Swift.Int, callback: @escaping ([Proximiio.ProximiioGeoJSON], [Proximiio.ProximiioGeoJSON]) -> Swift.Void)
+  @objc public func lineStringUntil(endNodeIndex: Swift.Int, lastPoint: CoreLocation.CLLocationCoordinate2D) -> [Proximiio.ProximiioGeoJSON]
+  @objc public func lineStringFrom(startNodeIndex: Swift.Int, firstPoint: CoreLocation.CLLocationCoordinate2D) -> [Proximiio.ProximiioGeoJSON]
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension PIORoute {
+  @objc dynamic public var summary: [Swift.String : Any] {
+    @objc get
+  }
+}
+extension CLLocationCoordinate2D : Swift.Equatable {
+}
+public func == (lhs: CoreLocation.CLLocationCoordinate2D, rhs: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+extension ProximiioGeoJSON {
+  public var jsonValue: SwiftyJSON.JSON? {
+    get
+  }
+  public var amenity: Swift.String {
+    get
+  }
+  public var priority: Swift.Int {
+    get
+  }
+  public var images: [Swift.String] {
+    get
+  }
+  public var coordinates: [Any] {
+    get
+  }
+}
+extension ProximiioGeoJSON {
+  public var shape: Mapbox.MGLShape? {
+    get
+  }
+  public var coordinate: CoreLocation.CLLocationCoordinate2D? {
+    get
+  }
+  public var point: Mapbox.MGLPointFeature? {
+    get
+  }
+  public var polylinePoint: Mapbox.MGLPointFeature? {
+    get
+  }
+  public var polyline: Mapbox.MGLPolylineFeature? {
+    get
+  }
+  public var lineLenght: Swift.Double {
+    get
+  }
+  public var isPOI: Swift.Bool {
+    get
+  }
+  public func toDictionary() -> [Swift.String : Any?]
+  public func toJSON() -> SwiftyJSON.JSON
+  public func getTitle(language: Swift.String = PIOConstants.language) -> Swift.String
+  public var icon: UIKit.UIImage? {
+    get
+  }
+}
+extension Array where Element == Proximiio.ProximiioGeoJSON {
+  public var amenities: [Proximiio.ProximiioAmenity] {
+    get
+  }
+  public func sortedByDistance(from position: CoreLocation.CLLocationCoordinate2D) -> [Proximiio.ProximiioGeoJSON]
+}
+@objc @_inheritsConvenienceInitializers open class PIORouteHeading : CoreLocation.CLHeading {
+  @objc override dynamic open var magneticHeading: CoreLocation.CLLocationDirection {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var trueHeading: CoreLocation.CLLocationDirection {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var headingAccuracy: CoreLocation.CLLocationDirection {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var timestamp: Foundation.Date {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var x: CoreLocation.CLHeadingComponentValue {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var y: CoreLocation.CLHeadingComponentValue {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var z: CoreLocation.CLHeadingComponentValue {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc override dynamic open func encode(with coder: Foundation.NSCoder)
+  public init(trueHeading: CoreLocation.CLLocationDirection, magnetic: CoreLocation.CLLocationDirection)
+  @objc deinit
+}
+extension CLLocationCoordinate2D {
+  public func distance(_ point: CoreLocation.CLLocationCoordinate2D) -> Swift.Double
+}
+@_inheritsConvenienceInitializers @objc public class PIORouteOptions : ObjectiveC.NSObject {
+  @objc public var avoidBarriers: Swift.Bool
+  @objc public var avoidElevators: Swift.Bool
+  @objc public var avoidEscalators: Swift.Bool
+  @objc public var avoidNarrowPaths: Swift.Bool
+  @objc public var avoidRamps: Swift.Bool
+  @objc public var avoidRevolvingDoors: Swift.Bool
+  @objc public var avoidStairs: Swift.Bool
+  @objc public var avoidTicketGates: Swift.Bool
+  @objc public var waypointList: [ProximiioMapbox.PIOWaypoint]
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension PIORouteOptions {
+  public func getWaypointById(_ identifier: Swift.String) -> Proximiio.ProximiioGeoJSON?
+  public func removeCompletedWaypoints(completed: Swift.Int)
+  public func addWaypoints(_ waypoints: ProximiioMapbox.PIOWaypoint...)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PIOWayfinder : ObjectiveC.NSObject {
+  @objc public static let shared: ProximiioMapbox.PIOWayfinder
+  @objc public func findRoute(from: CoreLocation.CLLocationCoordinate2D, fromLevel: Swift.Int, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, featureList: [Proximiio.ProximiioGeoJSON], telemetry: Swift.Bool = true, isReRouting: Swift.Bool = false) -> ProximiioMapbox.PIORoute?
+  @objc public func findPath(startLatitude: Swift.Double, startLongitude: Swift.Double, startLevel: Swift.Int, endLatitude: Swift.Double, endLongitude: Swift.Double, endLevel: Swift.Int, routeOptions: ProximiioMapbox.PIORouteOptions, featureList: [Proximiio.ProximiioGeoJSON]) -> [Proximiio.ProximiioGeoJSON]?
+  @objc deinit
+}
+@objc public protocol PIOTelemetryProtocol {
+  @objc var date: Foundation.Date { get set }
+  @objc var identifier: Swift.String { get set }
+  @objc func toDictionary() -> [Swift.String : Any]
+}
+@_inheritsConvenienceInitializers @objc public class PIOTelemetry : ObjectiveC.NSObject {
+  @objc public static let shared: ProximiioMapbox.PIOTelemetry
+  @objc public var isActive: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class PIOAnnotation : Mapbox.MGLPointAnnotation {
+  public var level: Swift.Int
+  public var image: UIKit.UIImage
+  public var isHidden: Swift.Bool
+  @objc deinit
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@_hasMissingDesignatedInitializers public class PIOTurf {
+  public static func nearPointOnLine(point: CoreLocation.CLLocationCoordinate2D, line: [CoreLocation.CLLocationCoordinate2D]) -> Proximiio.ProximiioPointOnLine?
+  @objc deinit
+}
+extension PIOTurf {
+  public static func inside(point: CoreLocation.CLLocationCoordinate2D, poly: [Any]) -> Swift.Bool
+}
+extension PIOWayfinder {
+  public func partialFindRoute(from: CoreLocation.CLLocationCoordinate2D?, fromLevel: Swift.Int, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, remainingWaypoints: [ProximiioMapbox.PIOWaypoint], featuresList: [Proximiio.ProximiioGeoJSON]) -> [Proximiio.ProximiioGeoJSON]?
+}
+public struct PIORouteNearestPoint {
+}
+extension MGLSymbolStyleLayer {
+  public func updateVisibility(for level: Swift.Int)
+}
+@_hasMissingDesignatedInitializers @objc public class PIOHeading : ObjectiveC.NSObject {
+  @objc public var text: Swift.String
+  @objc public var rotation: Swift.Double
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class PIORouteUpdateData : ObjectiveC.NSObject {
+  @objc public var nodeIndex: Swift.Int
+  @objc public var stepBearing: Swift.Double
+  @objc public var stepDirection: ProximiioMapbox.PIOGuidanceDirection
+  @objc public var stepDistance: Swift.Double
+  @objc public var nextStepBearing: Foundation.NSNumber?
+  @objc public var nextStepDistance: Foundation.NSNumber?
+  @objc public var nextStepDirection: ProximiioMapbox.PIOGuidanceDirection
+  @objc public var position: CoreLocation.CLLocationCoordinate2D
+  @objc public var pathLengthRemaining: Swift.Double
+  @objc public var stepHeading: ProximiioMapbox.PIOHeading {
+    @objc get
+  }
+  public init(nodeIndex: Swift.Int, stepBearing: Swift.Double, stepDirection: ProximiioMapbox.PIOGuidanceDirection, stepDistance: Swift.Double, nextStepBearing: Swift.Double?, nextStepDistance: Swift.Double?, nextStepDirection: ProximiioMapbox.PIOGuidanceDirection?, position: CoreLocation.CLLocationCoordinate2D, pathLengthRemaining: Swift.Double)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum PIOLandmarkSide : Swift.Int {
+  case left, right
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class PIOLandmark : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum PIOGuidanceDirection : Swift.Int, Swift.Equatable {
+  case none
+  case start, turnAround, finish, straight
+  case leftSlight, leftNormal, leftHard
+  case rightSlight, rightNormal, rightHard
+  case upElevator, upEscalator, upStairs
+  case downElevator, downEscalator, downStairs
+  case exitElevator, exitEscalator, exitStairs
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension PIOGuidanceDirection {
+  public func isLevelChange() -> Swift.Bool
+  public func isTurn() -> Swift.Bool
+  public func isLevelChangeExit() -> Swift.Bool
+}
+public class PIOTurfRing {
+  public var coordinates: [CoreLocation.CLLocationCoordinate2D]
+  public init(coordinates: [CoreLocation.CLLocationCoordinate2D])
+  @objc deinit
+}
+extension PIOTurfRing {
+  public func contains(_ coordinate: CoreLocation.CLLocationCoordinate2D, ignoreBoundary: Swift.Bool = false) -> Swift.Bool
+}
+@objc public class ProximiioMapboxConfiguration : ObjectiveC.NSObject {
+  final public let token: Swift.String
+  @objc public var showRasterFloorplans: Swift.Bool
+  @objc public var showGeoJSONFloorplans: Swift.Bool
+  @objc public var showPOIs: Swift.Bool
+  @objc public var showUserLocation: Swift.Bool
+  @objc public var routeStartImage: UIKit.UIImage
+  @objc public var routeFinishImage: UIKit.UIImage
+  @objc public init(token: Swift.String)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public enum ProximiioMapboxAuthorizationResult : Swift.Int {
+  case success
+  case invalid
+  case failure
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ProximiioMapboxNetworkResult : Swift.Int {
+  case success
+  case failure
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol ProximiioMapboxInteraction : AnyObject {
+  @objc func change(floor: Swift.Int)
+  @objc func onTap(feature: Proximiio.ProximiioGeoJSON)
+  @objc func onRequestReRoute()
+  @objc func onFollowingUserUpdate(_ isFollowing: Swift.Bool)
+}
+@objc public protocol ProximiioMapboxNavigation : AnyObject {
+  @objc func onRoute(route: ProximiioMapbox.PIORoute?)
+  @objc func routeEvent(eventType type: ProximiioMapbox.PIORouteUpdateType, text: Swift.String, additionalText: Swift.String?, data: ProximiioMapbox.PIORouteUpdateData?)
+  @objc func onHazardEntered(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc func onSegmentEntered(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc func onDecisionEntered(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc func onLandmarkEntered(_ landmarks: [ProximiioMapbox.PIOLandmark])
+  @objc func onHazardExit(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc func onSegmentExit(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc func onDecisionExit(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc func onLandmarkExit(_ landmarks: [Proximiio.ProximiioGeoJSON])
+  @objc func onPositionUpdate(_ position: CoreLocation.CLLocationCoordinate2D)
+  @objc func onHeadingUpdate(_ heading: Swift.Double)
+  @objc func onTTS()
+}
+@objc public class ProximiioMapbox : ObjectiveC.NSObject, Foundation.URLSessionDelegate {
+  public var headingOrientation: CoreLocation.CLDeviceOrientation
+  public var authorizationStatus: CoreLocation.CLAuthorizationStatus
+  public var debugShowDevelopmentRoutes: Swift.Bool
+  @objc public var shakyHandsMode: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc weak public var mapInteraction: ProximiioMapbox.ProximiioMapboxInteraction?
+  @objc weak public var mapNavigation: ProximiioMapbox.ProximiioMapboxNavigation?
+  @objc weak public var mapView: Mapbox.MGLMapView?
+  @objc public var styleURL: Foundation.URL? {
+    @objc get
+  }
+  @objc public var userLocation: Proximiio.ProximiioLocation?
+  @objc public var userFloor: Proximiio.ProximiioFloor? {
+    @objc get
+  }
+  public var lastUserLocation: CoreLocation.CLLocationCoordinate2D?
+  @objc public var mapFloor: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var database: ProximiioMapbox.PIODatabase
+  public var navigation: ProximiioMapbox.PIONavigation? {
+    get
+  }
+  @objc public var followingUser: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public func route(destination: Proximiio.ProximiioGeoJSON, preview: Swift.Bool = true, options: ProximiioMapbox.PIORouteOptions? = nil)
+  @objc public func setConfiguration(newConfiguration: ProximiioMapbox.ProximiioMapboxConfiguration)
+  @objc public func initialize(_ completion: @escaping (ProximiioMapbox.ProximiioMapboxAuthorizationResult) -> Swift.Void)
+  @objc public func enableNavigation(_ mapView: Mapbox.MGLMapView? = nil)
+  @objc public init(mapView: Mapbox.MGLMapView?, configuration: ProximiioMapbox.ProximiioMapboxConfiguration)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension ProximiioMapbox {
+  @objc dynamic public func setLevel(level: Swift.Int)
+}
+extension ProximiioMapbox {
+  @objc dynamic public func routeFind(from: Proximiio.ProximiioGeoJSON, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, previewRoute: Swift.Bool, startRoute: Swift.Bool)
+  @objc dynamic public func routeFind(from: CoreLocation.CLLocation, level: Swift.Int, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, previewRoute: Swift.Bool, startRoute: Swift.Bool)
+  @objc dynamic public func routeFind(to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions)
+  @objc dynamic public func routeFindAndStart(to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions)
+  @objc dynamic public func routeFindAndPreview(to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions)
+  @objc dynamic public func routeStart(_ route: ProximiioMapbox.PIORoute? = nil)
+  @objc dynamic public func routeCancel(silent: Swift.Bool)
+  @objc dynamic public func routePreview(_ route: ProximiioMapbox.PIORoute? = nil)
+  @objc dynamic public func repeatLastInstruction()
+}
+extension ProximiioMapbox : ProximiioMapbox.PIORouteDelegate {
+  @objc dynamic public func onHazardExit(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onSegmentExit(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onDecisionExit(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onLandmarkExit(_ landmark: [Proximiio.ProximiioGeoJSON])
+  @objc dynamic public func onTTS()
+  @objc dynamic public func onDecisionEntered(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onLandmarkEntered(_ landmarks: [ProximiioMapbox.PIOLandmark])
+  @objc dynamic public func onHazardEntered(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onSegmentEntered(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc dynamic public func onRoute(route: ProximiioMapbox.PIORoute?)
+  @objc dynamic public func routeEvent(eventType type: ProximiioMapbox.PIORouteUpdateType, text: Swift.String, additionalText: Swift.String?, data: ProximiioMapbox.PIORouteUpdateData?)
+}
+extension ProximiioMapbox {
+  @objc dynamic public func floorUp()
+  @objc dynamic public func floorDown()
+  @objc dynamic public func floorAt(_ floor: Swift.Int)
+}
+extension ProximiioMapbox {
+  public func enableSimulationWalk(enabled: Swift.Bool)
+}
+extension ProximiioMapbox : Mapbox.MGLMapViewDelegate {
+  public func showPreviewDestinationMarker(_ image: UIKit.UIImage?, coordinate: CoreLocation.CLLocationCoordinate2D?, level: Swift.Int?)
+  public func hidePreviewDestinationMarker()
+}
+extension ProximiioMapbox {
+  @objc dynamic public func centerAtUser(zoom: Swift.Double = 20, animated: Swift.Bool = true, completed: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc dynamic public func centerAtFeature(_ feature: Proximiio.ProximiioGeoJSON, zoom: Swift.Double = 20, animated: Swift.Bool = true, completed: ((Proximiio.ProximiioGeoJSON) -> Swift.Void)? = nil)
+}
+extension ProximiioMapbox : ProximiioMapbox.PIONavigationRouting {
+  @objc dynamic public func onRequestReRoute()
+}
+extension ProximiioMapbox {
+  public func location(_ value: CoreLocation.CLLocationCoordinate2D, simulation: Swift.Bool)
+  public func heading(_ value: Swift.Double, simulation: Swift.Bool)
+}
+public enum PIOConstants {
+  public static let language: Swift.String
+}
+extension ProximiioAmenity {
+  public var json: SwiftyJSON.JSON {
+    get
+  }
+  public var image: UIKit.UIImage? {
+    get
+  }
+  public var imageSmall: UIKit.UIImage? {
+    get
+  }
+}
+@objc public protocol PIOWaypoint {
+}
+@objc public class SimpleWaypoint : ObjectiveC.NSObject, ProximiioMapbox.PIOWaypoint {
+  @objc public var feature: Proximiio.ProximiioGeoJSON
+  public init(feature: Proximiio.ProximiioGeoJSON)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class VariableWaypoint : ObjectiveC.NSObject, ProximiioMapbox.PIOWaypoint {
+  @objc public var features: [Proximiio.ProximiioGeoJSON]
+  public init(features: [Proximiio.ProximiioGeoJSON])
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers public class PIODebug {
+  public enum PIODebugSource {
+    case app, map, sdk, network, database, generic
+    public static func == (a: ProximiioMapbox.PIODebug.PIODebugSource, b: ProximiioMapbox.PIODebug.PIODebugSource) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static func log(source: ProximiioMapbox.PIODebug.PIODebugSource = .generic, _ objects: Any, fileName: Swift.String = #file, lineNumber: Swift.Int = #line)
+  @objc deinit
+}
+@objc public protocol PIOFilter {
+  @objc func filterTag() -> Swift.String
+  @objc func inputNames() -> [Swift.String]
+  @objc func filterItem(feature: Proximiio.ProximiioGeoJSON, input: [Swift.String]) -> Swift.Bool
+}
+public struct PIOTurfBoundingBox {
+  public init?(from coordinates: [CoreLocation.CLLocationCoordinate2D]?)
+  public init(_ northWest: CoreLocation.CLLocationCoordinate2D, _ southEast: CoreLocation.CLLocationCoordinate2D)
+  public func contains(_ coordinate: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+  public var northWest: CoreLocation.CLLocationCoordinate2D
+  public var southEast: CoreLocation.CLLocationCoordinate2D
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PIOAudioManager : ObjectiveC.NSObject {
+  public enum StatePlayed {
+    case finished
+    case canceled
+    case error
+    public static func == (a: ProximiioMapbox.PIOAudioManager.StatePlayed, b: ProximiioMapbox.PIOAudioManager.StatePlayed) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum PlayableItem {
+    case sound(item: AVFoundation.AVPlayerItem, completion: ((ProximiioMapbox.PIOAudioManager.StatePlayed) -> Swift.Void)?)
+    case speech(item: AVFoundation.AVSpeechUtterance, completion: ((ProximiioMapbox.PIOAudioManager.StatePlayed) -> Swift.Void)?)
+  }
+  public var avoidRepeatSameMessage: Swift.Bool
+  public var speechSynthesizer: AVFoundation.AVSpeechSynthesizer {
+    get
+    set
+  }
+  public var queuePlayer: AVFoundation.AVQueuePlayer {
+    get
+    set
+  }
+  public func schedulePlay(playerItem: AVFoundation.AVPlayerItem, force: Swift.Bool = false, completion: ((ProximiioMapbox.PIOAudioManager.StatePlayed) -> Swift.Void)?)
+  public func scheduleSpeech(utterance: AVFoundation.AVSpeechUtterance, force: Swift.Bool = false, completion: ((ProximiioMapbox.PIOAudioManager.StatePlayed) -> Swift.Void)?)
+  public func startPlaying()
+  public func remove(playerItems: [AVFoundation.AVPlayerItem])
+  public func abortPlaying()
+  @objc public func playerItemDidFinishPlaying(_ notification: Foundation.Notification)
+  @objc deinit
+}
+extension PIOAudioManager : AVFoundation.AVSpeechSynthesizerDelegate {
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, didStart utterance: AVFoundation.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, didFinish utterance: AVFoundation.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, didPause utterance: AVFoundation.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, didCancel utterance: AVFoundation.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, didContinue utterance: AVFoundation.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFoundation.AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: Foundation.NSRange, utterance: AVFoundation.AVSpeechUtterance)
+}
+extension AVSpeechUtterance {
+  convenience public init(string: Swift.String, voice: AVFoundation.AVSpeechSynthesisVoice? = nil)
+}
+@objc public protocol PIONavigationProtocol : AnyObject {
+  @objc func onProcessNode(_ node: ProximiioMapbox.PIORouteNode?)
+}
+@objc public protocol PIONavigationRouting : AnyObject {
+  @objc func onRequestReRoute()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PIONavigation : ObjectiveC.NSObject, ProximiioMapbox.PIONavigationDelegate {
+  @objc weak public var delegate: ProximiioMapbox.PIONavigationProtocol?
+  @objc weak public var reRoutingDelegate: ProximiioMapbox.PIONavigationRouting?
+  @objc public func setStepImmediateThreshold(inMeters threshold: Swift.Double)
+  @objc public func setStepPreparationThreshold(inMeters threshold: Swift.Double)
+  @objc public func setRouteFinishThreshold(inMeters threshold: Swift.Double)
+  @objc public func setReRouting(inMeters threshold: Swift.Double)
+  @objc public func setReRouting(automatic: Swift.Bool)
+  @objc public func setMapboxMap(mapboxMap: Mapbox.MGLMapView?)
+  @objc public func setUnitConversion(unitName name: Swift.String, conversionCoefficiente coefficient: Swift.Double)
+  @objc public func hazardCallback(callback: ProximiioMapbox.PIOHazardCallback?)
+  @objc public func segmentCallback(callback: ProximiioMapbox.PIOSegmentCallback?)
+  @objc public func decisionCallback(callback: ProximiioMapbox.PIODecisionCallback?)
+  @objc public func headingCorrectionCallback(callback: ProximiioMapbox.PIOHeadingCorrectionCallback?)
+  @objc public func ttsLandmarkAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc public func landmarksCallback(callback: ProximiioMapbox.PIOLandmarkCallback?)
+  @objc public func ttsEnable(enable: Swift.Bool)
+  @objc public func ttsDisable()
+  @objc public func ttsHazardAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc public func ttsSegmentAlert(enterEnabled: Swift.Bool, exitEnabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc public func ttsDecisionAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc public func ttsLevelChangerMetadataKeys(metadataKeys: [Swift.Int])
+  @objc public func ttsHeadingCorrection(enabled: Swift.Bool)
+  @objc public func ttsHeadingCorrectionThreshold(meters: Swift.Double, degrees: Swift.Double)
+  @objc public func ttsMetadataKeys(indexes: [Swift.Int])
+  @objc public func ttsRepeatLastInstruction()
+  @objc public func ttsReassuranceInstruction(enabled: Swift.Bool)
+  @objc public func ttsReassuranceInstruction(distance: Swift.Double)
+  @objc public func ttsSoonUpdateThreshold(thresholdMeters: Swift.Double)
+  @objc public var route: ProximiioMapbox.PIORoute?
+  @objc public var routeLastNodeIndex: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var remainingRoute: [Proximiio.ProximiioGeoJSON]
+  @objc public var completedRoute: [Proximiio.ProximiioGeoJSON]
+  @objc public var closestPointToRoute: Proximiio.ProximiioPointOnLine?
+  @objc weak public var routeDelegate: ProximiioMapbox.PIORouteDelegate?
+  public var routeStarted: Swift.Bool
+  @objc public func routeFind(from: CoreLocation.CLLocationCoordinate2D, fromLevel: Swift.Int, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, previewRoute: Swift.Bool, startRoute: Swift.Bool, featureList: [Proximiio.ProximiioGeoJSON], isReRouting: Swift.Bool = false)
+  @objc public func routeCancel(silent: Swift.Bool = false)
+  @objc public func routePreview() -> Swift.Bool
+  @objc public func routeStart() -> Swift.Bool
+  @objc public func processUserLocation(_ position: CoreLocation.CLLocationCoordinate2D, force: Swift.Bool)
+  @objc public func updateUserLevel(level: Swift.Int)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class PIORouteNode : ObjectiveC.NSObject {
+  @objc public var bearingFromLastNode: Swift.Double
+  @objc public var coordinates: CoreLocation.CLLocation
+  @objc public var direction: ProximiioMapbox.PIOGuidanceDirection
+  @objc public var distanceFromLastNode: Swift.Double
+  @objc public var level: Swift.Int
+  @objc public var isWaypoint: Swift.Bool
+  @objc public var waypointId: Swift.String?
+  @objc public var levelChangerId: Swift.String?
+  @objc public var lineStringFeatureTo: Proximiio.ProximiioGeoJSON?
+  @objc public var lineStringCoordinates: [CoreLocation.CLLocationCoordinate2D]
+  @objc public var text: Swift.String
+  public static func == (lhs: ProximiioMapbox.PIORouteNode, rhs: ProximiioMapbox.PIORouteNode) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol PIONavigationDelegate : AnyObject {
+  @objc func setStepImmediateThreshold(inMeters threshold: Swift.Double)
+  @objc func setStepPreparationThreshold(inMeters threshold: Swift.Double)
+  @objc func setRouteFinishThreshold(inMeters threshold: Swift.Double)
+  @objc func setReRouting(inMeters threshold: Swift.Double)
+  @objc func setReRouting(automatic: Swift.Bool)
+  @objc func setUnitConversion(unitName name: Swift.String, conversionCoefficiente coefficient: Swift.Double)
+  @objc func hazardCallback(callback: ProximiioMapbox.PIOHazardCallback?)
+  @objc func segmentCallback(callback: ProximiioMapbox.PIOSegmentCallback?)
+  @objc func decisionCallback(callback: ProximiioMapbox.PIODecisionCallback?)
+  @objc func headingCorrectionCallback(callback: ProximiioMapbox.PIOHeadingCorrectionCallback?)
+  @objc func landmarksCallback(callback: ProximiioMapbox.PIOLandmarkCallback?)
+  @objc func ttsEnable(enable: Swift.Bool)
+  @objc func ttsDisable()
+  @objc func ttsHazardAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc func ttsSegmentAlert(enterEnabled: Swift.Bool, exitEnabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc func ttsDecisionAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc func ttsLevelChangerMetadataKeys(metadataKeys: [Swift.Int])
+  @objc func ttsHeadingCorrection(enabled: Swift.Bool)
+  @objc func ttsHeadingCorrectionThreshold(meters: Swift.Double, degrees: Swift.Double)
+  @objc func ttsLandmarkAlert(enabled: Swift.Bool, metadataKeys: [Swift.Int])
+  @objc func ttsMetadataKeys(indexes: [Swift.Int])
+  @objc func ttsRepeatLastInstruction()
+  @objc func ttsReassuranceInstruction(enabled: Swift.Bool)
+  @objc func ttsReassuranceInstruction(distance: Swift.Double)
+  @objc func ttsSoonUpdateThreshold(thresholdMeters: Swift.Double)
+  @objc func routeCancel(silent: Swift.Bool)
+  @objc func routePreview() -> Swift.Bool
+  @objc func routeStart() -> Swift.Bool
+  @objc func processUserLocation(_ position: CoreLocation.CLLocationCoordinate2D, force: Swift.Bool)
+  @objc func updateUserLevel(level: Swift.Int)
+}
+@objc public protocol PIOHazardCallback : AnyObject {
+  @objc func enteredHazardRange(hazard: Proximiio.ProximiioGeoJSON)
+  @objc func exitedHazardRange(hazard: Proximiio.ProximiioGeoJSON)
+}
+@objc public protocol PIOSegmentCallback : AnyObject {
+  @objc func onSegmentEntered(segment: Proximiio.ProximiioGeoJSON)
+  @objc func onSegmentLeft(segment: Proximiio.ProximiioGeoJSON)
+}
+@objc public protocol PIODecisionCallback : AnyObject {
+  @objc func decisionEntered(segment: Proximiio.ProximiioGeoJSON)
+  @objc func decisionExited(segment: Proximiio.ProximiioGeoJSON)
+}
+@objc public protocol PIOHeadingCorrectionCallback : AnyObject {
+  @objc func onHeadingCorrection(degress: Swift.Double)
+}
+@objc public protocol PIOLandmarkCallback : AnyObject {
+  @objc func onLandmarkEnteredRange(landmarkList: [ProximiioMapbox.PIOLandmark])
+  @objc func onLandmarkExitedRange(landmarkList: [Proximiio.ProximiioGeoJSON])
+}
+@objc public protocol PIORouteDelegate : AnyObject {
+  @objc func onRoute(route: ProximiioMapbox.PIORoute?)
+  @objc func routeEvent(eventType type: ProximiioMapbox.PIORouteUpdateType, text: Swift.String, additionalText: Swift.String?, data: ProximiioMapbox.PIORouteUpdateData?)
+  @objc func onHazardEntered(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc func onSegmentEntered(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc func onDecisionEntered(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc func onLandmarkEntered(_ landmark: [ProximiioMapbox.PIOLandmark])
+  @objc func onHazardExit(_ hazard: Proximiio.ProximiioGeoJSON)
+  @objc func onSegmentExit(_ segment: Proximiio.ProximiioGeoJSON)
+  @objc func onDecisionExit(_ decision: Proximiio.ProximiioGeoJSON)
+  @objc func onLandmarkExit(_ landmark: [Proximiio.ProximiioGeoJSON])
+}
+@objc public enum PIORouteUpdateType : Swift.Int {
+  case calculating, recalculating, routeNotfound, canceled, finished
+  case new, update, soon, immediate
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class PIOReachability : ObjectiveC.NSObject {
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension ProximiioMapbox.PIOLandmarkSide : Swift.Equatable {}
+extension ProximiioMapbox.PIOLandmarkSide : Swift.Hashable {}
+extension ProximiioMapbox.PIOLandmarkSide : Swift.RawRepresentable {}
+extension ProximiioMapbox.PIOGuidanceDirection : Swift.Hashable {}
+extension ProximiioMapbox.PIOGuidanceDirection : Swift.RawRepresentable {}
+extension ProximiioMapbox.ProximiioMapboxAuthorizationResult : Swift.Equatable {}
+extension ProximiioMapbox.ProximiioMapboxAuthorizationResult : Swift.Hashable {}
+extension ProximiioMapbox.ProximiioMapboxAuthorizationResult : Swift.RawRepresentable {}
+extension ProximiioMapbox.ProximiioMapboxNetworkResult : Swift.Equatable {}
+extension ProximiioMapbox.ProximiioMapboxNetworkResult : Swift.Hashable {}
+extension ProximiioMapbox.ProximiioMapboxNetworkResult : Swift.RawRepresentable {}
+extension ProximiioMapbox.PIODebug.PIODebugSource : Swift.Equatable {}
+extension ProximiioMapbox.PIODebug.PIODebugSource : Swift.Hashable {}
+extension ProximiioMapbox.PIOAudioManager.StatePlayed : Swift.Equatable {}
+extension ProximiioMapbox.PIOAudioManager.StatePlayed : Swift.Hashable {}
+extension ProximiioMapbox.PIORouteUpdateType : Swift.Equatable {}
+extension ProximiioMapbox.PIORouteUpdateType : Swift.Hashable {}
+extension ProximiioMapbox.PIORouteUpdateType : Swift.RawRepresentable {}
