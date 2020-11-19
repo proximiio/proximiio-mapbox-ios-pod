@@ -33,10 +33,7 @@ import UIKit
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class PIORoute : ObjectiveC.NSObject {
-  @objc public var from: CoreLocation.CLLocationCoordinate2D
-  @objc public var fromLevel: Swift.Int
   @objc public var destination: Proximiio.ProximiioGeoJSON
-  @objc public var options: ProximiioMapbox.PIORouteOptions
   @objc public var isPreview: Swift.Bool
   @objc public var nodeList: [ProximiioMapbox.PIORouteNode]
   @objc public func getLineStringFeatureList() -> [Proximiio.ProximiioGeoJSON]
@@ -153,14 +150,8 @@ extension CLLocationCoordinate2D {
   @objc public var avoidRevolvingDoors: Swift.Bool
   @objc public var avoidStairs: Swift.Bool
   @objc public var avoidTicketGates: Swift.Bool
-  @objc public var waypointList: [ProximiioMapbox.PIOWaypoint]
   @objc override dynamic public init()
   @objc deinit
-}
-extension PIORouteOptions {
-  public func getWaypointById(_ identifier: Swift.String) -> Proximiio.ProximiioGeoJSON?
-  public func removeCompletedWaypoints(completed: Swift.Int)
-  public func addWaypoints(_ waypoints: ProximiioMapbox.PIOWaypoint...)
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PIOWayfinder : ObjectiveC.NSObject {
   @objc public static let shared: ProximiioMapbox.PIOWayfinder
@@ -193,9 +184,6 @@ extension PIORouteOptions {
 }
 extension PIOTurf {
   public static func inside(point: CoreLocation.CLLocationCoordinate2D, poly: [Any]) -> Swift.Bool
-}
-extension PIOWayfinder {
-  public func partialFindRoute(from: CoreLocation.CLLocationCoordinate2D?, fromLevel: Swift.Int, to: Proximiio.ProximiioGeoJSON, options: ProximiioMapbox.PIORouteOptions, remainingWaypoints: [ProximiioMapbox.PIOWaypoint], featuresList: [Proximiio.ProximiioGeoJSON]) -> [Proximiio.ProximiioGeoJSON]?
 }
 public struct PIORouteNearestPoint {
 }
@@ -420,20 +408,6 @@ extension ProximiioAmenity {
     get
   }
 }
-@objc public protocol PIOWaypoint {
-}
-@objc public class SimpleWaypoint : ObjectiveC.NSObject, ProximiioMapbox.PIOWaypoint {
-  @objc public var feature: Proximiio.ProximiioGeoJSON
-  public init(feature: Proximiio.ProximiioGeoJSON)
-  @objc deinit
-  @objc override dynamic public init()
-}
-@objc public class VariableWaypoint : ObjectiveC.NSObject, ProximiioMapbox.PIOWaypoint {
-  @objc public var features: [Proximiio.ProximiioGeoJSON]
-  public init(features: [Proximiio.ProximiioGeoJSON])
-  @objc deinit
-  @objc override dynamic public init()
-}
 @_hasMissingDesignatedInitializers public class PIODebug {
   public enum PIODebugSource {
     case app, map, sdk, network, database, generic
@@ -560,8 +534,6 @@ extension AVSpeechUtterance {
   @objc public var direction: ProximiioMapbox.PIOGuidanceDirection
   @objc public var distanceFromLastNode: Swift.Double
   @objc public var level: Swift.Int
-  @objc public var isWaypoint: Swift.Bool
-  @objc public var waypointId: Swift.String?
   @objc public var levelChangerId: Swift.String?
   @objc public var lineStringFeatureTo: Proximiio.ProximiioGeoJSON?
   @objc public var lineStringCoordinates: [CoreLocation.CLLocationCoordinate2D]

@@ -45,9 +45,6 @@ class Wayfinding {
             || feature.properties.type === 'escalator'
             || feature.properties.type === 'staircase'
         );
-        levelChangerList.forEach(levelChanger => {
-            if (levelChanger.id === undefined) levelChanger.id = levelChanger.properties.id;
-        });
         let accesibilityPoiTypeList = ['door', 'ticket_gate'];
         let accessibilityPoiList = featureList.filter(feature => accesibilityPoiTypeList.includes(feature.properties.type));
 
@@ -893,15 +890,12 @@ class Wayfinding {
             if (current === fixedEndPoint) {
 //                console.log('found the route!');
                 let finalPath = this.reconstructPath(current);
-                if (fixedEndPoint !== endPoint && endPoint.properties.levels !== undefined && (!fixedEndPoint.properties.onCorridor || this._distance(fixedEndPoint, endPoint) > this._pathFixDistance)) {
-                    endPoint.properties.fixed = true
+                if (fixedEndPoint !== endPoint && (!fixedEndPoint.properties.onCorridor || this._distance(fixedEndPoint, endPoint) > this._pathFixDistance)) {
                     finalPath.push(endPoint);
                 }
                 if (fixedStartPoint !== startPoint && (!fixedStartPoint.properties.onCorridor || this._distance(fixedStartPoint, startPoint) > this._pathFixDistance)) {
-                    startPoint.properties.fixed = true
                     finalPath.unshift(startPoint);
                 }
-                finalPath[finalPath.length - 1].properties.gscore = current.properties.gscore;
                 return finalPath
             }
             closedSet.push(openSet.splice(openSet.indexOf(current),1));
@@ -920,7 +914,7 @@ class Wayfinding {
                 let gScoreNeighbour = neighbour.properties.gscore != null ? neighbour.properties.gscore : Infinity;
                 if (tentativeGScore < gScoreNeighbour) {
                     neighbour.properties.cameFrom = current;
-                    neighbour.properties.gscore = tentativeGScore + 0.2;
+                    neighbour.properties.gscore = tentativeGScore;
                     neighbour.properties.fscore = tentativeGScore + this._heuristic(neighbour, fixedEndPoint);
                     if (openSet.indexOf(neighbour) < 0) {
                         openSet.push(neighbour);
@@ -1430,11 +1424,9 @@ class Wayfinding {
      */
     _getFixEndPoint(endPoint, startPointLevel) {
         // LC
-        let lc = levelChangers.find(it => it.id === endPoint.id);
-        // if (lc !== undefined) return lc;
-        if (lc !== undefined && lc.properties.fixedPointMap !== undefined) {
+        if (endPoint.properties.fixedPointMap !== undefined) {
             let nearestLevel = undefined;
-            lc.properties.fixedPointMap.forEach((fixedPoint, level) => {
+            endPoint.properties.fixedPointMap.keys().forEach(level => {
                 if (nearestLevel === undefined || Math.abs(nearestLevel - startPointLevel) > Math.abs(level - startPointLevel)) {
                     nearestLevel = level;
                 }

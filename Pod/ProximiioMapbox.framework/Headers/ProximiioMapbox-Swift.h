@@ -456,10 +456,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOReachability")
 
 SWIFT_CLASS("_TtC15ProximiioMapbox8PIORoute")
 @interface PIORoute : NSObject
-@property (nonatomic) CLLocationCoordinate2D from;
-@property (nonatomic) NSInteger fromLevel;
 @property (nonatomic, strong) ProximiioGeoJSON * _Nonnull destination;
-@property (nonatomic, strong) PIORouteOptions * _Nonnull options;
 @property (nonatomic) BOOL isPreview;
 @property (nonatomic, copy) NSArray<PIORouteNode *> * _Nonnull nodeList;
 - (NSArray<ProximiioGeoJSON *> * _Nonnull)getLineStringFeatureList SWIFT_WARN_UNUSED_RESULT;
@@ -516,8 +513,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox12PIORouteNode")
 @property (nonatomic) enum PIOGuidanceDirection direction;
 @property (nonatomic) double distanceFromLastNode;
 @property (nonatomic) NSInteger level;
-@property (nonatomic) BOOL isWaypoint;
-@property (nonatomic, copy) NSString * _Nullable waypointId;
 @property (nonatomic, copy) NSString * _Nullable levelChangerId;
 @property (nonatomic, strong) ProximiioGeoJSON * _Nullable lineStringFeatureTo;
 @property (nonatomic, copy) NSArray<NSValue *> * _Nonnull lineStringCoordinates;
@@ -526,7 +521,6 @@ SWIFT_CLASS("_TtC15ProximiioMapbox12PIORouteNode")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@protocol PIOWaypoint;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
 @interface PIORouteOptions : NSObject
@@ -538,10 +532,8 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIORouteOptions")
 @property (nonatomic) BOOL avoidRevolvingDoors;
 @property (nonatomic) BOOL avoidStairs;
 @property (nonatomic) BOOL avoidTicketGates;
-@property (nonatomic, copy) NSArray<id <PIOWaypoint>> * _Nonnull waypointList;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
-
 
 @class NSNumber;
 
@@ -606,12 +598,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (PIORoute * _Nullable)findRouteFrom:(CLLocationCoordinate2D)from fromLevel:(NSInteger)fromLevel to:(ProximiioGeoJSON * _Nonnull)to options:(PIORouteOptions * _Nonnull)options featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList telemetry:(BOOL)telemetry isReRouting:(BOOL)isReRouting SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<ProximiioGeoJSON *> * _Nullable)findPathWithStartLatitude:(double)startLatitude startLongitude:(double)startLongitude startLevel:(NSInteger)startLevel endLatitude:(double)endLatitude endLongitude:(double)endLongitude endLevel:(NSInteger)endLevel routeOptions:(PIORouteOptions * _Nonnull)routeOptions featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-SWIFT_PROTOCOL("_TtP15ProximiioMapbox11PIOWaypoint_")
-@protocol PIOWaypoint
 @end
 
 
@@ -761,22 +747,6 @@ typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, open) {
 };
 
 
-SWIFT_CLASS("_TtC15ProximiioMapbox14SimpleWaypoint")
-@interface SimpleWaypoint : NSObject <PIOWaypoint>
-@property (nonatomic, strong) ProximiioGeoJSON * _Nonnull feature;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
-SWIFT_CLASS("_TtC15ProximiioMapbox16VariableWaypoint")
-@interface VariableWaypoint : NSObject <PIOWaypoint>
-@property (nonatomic, copy) NSArray<ProximiioGeoJSON *> * _Nonnull features;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
