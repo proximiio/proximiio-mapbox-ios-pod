@@ -54,8 +54,8 @@ class Wayfinding {
         // LevelChangers: Create level array from legacy min/max values
         levelChangerList.forEach(levelChanger => {
             if (levelChanger.properties.levels === undefined) {
+                levelChanger.properties.levels = [];
                 if (levelChanger.properties.level_min !== undefined && levelChanger.properties.level_max !== undefined) {
-                    levelChanger.properties.levels = [];
                     for (let level = levelChanger.properties.level_min; level <= levelChanger.properties.level_max; level++) {
                         levelChanger.properties.levels.push(level);
                     }
@@ -763,6 +763,51 @@ class Wayfinding {
         } while (current != null);
 
         path.reverse();
+
+        // Simplify the route by omitting corners that are basically straight
+        let pointsToFilter = [];
+        for (let i = 1; i < (path.length - 1); i++) {
+            let pointA = path[i - 1];
+            let pointB = path[i];
+            let pointC = path[i + 1];
+
+            // Different floors nothing to do
+            if (pointA.properties.level !== pointB.properties.level || pointA.properties.level !== pointC.properties.level) {
+                continue;
+            }
+
+            let bearingAtoB = this._bearing(pointA.geometry.coordinates, pointB.geometry.coordinates);
+            let bearingBtoC = this._bearing(pointB.geometry.coordinates, pointC.geometry.coordinates);
+            let bearingDiff = Math.abs(bearingAtoB - bearingBtoC);
+            if (bearingDiff > Math.PI) {
+                bearingDiff -= Math.PI;
+            }
+            
+            // 4 degrees filter
+            if (bearingDiff < 0.06977777) {
+                pointsToFilter.push(pointB);
+            }
+        }
+
+        // Simplify the route by omitting corners that are basically at the same spot
+        for (let i = 0; i < (path.length - 1); i++) {
+            let pointA = path[i];
+            let pointB = path[i + 1];
+
+            // Different floors nothing to do
+            if (pointsToFilter.includes(pointA) || pointA.properties.level !== pointB.properties.level) {
+                continue;
+            }
+
+            let distanceAtoB = this._distance(pointA, pointB);
+            // 70cm
+            if (distanceAtoB < 0.7) {
+                pointsToFilter.push(pointA);
+            }
+        }
+
+        path = path.filter(pathPoint => !pointsToFilter.includes(pathPoint));
+
         // let pathCoordinates = path.map(point => point.geometry.coordinates);
         return path;
     }
@@ -1582,3 +1627,4 @@ class Wayfinding {
         return 0;
     }
 }
+
