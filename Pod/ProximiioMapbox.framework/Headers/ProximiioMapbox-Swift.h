@@ -214,7 +214,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
-
 @class NSCoder;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox13PIOAnnotation")
@@ -700,6 +699,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic, weak) id <ProximiioMapboxInteraction> _Nullable mapInteraction;
 @property (nonatomic, weak) id <ProximiioMapboxNavigation> _Nullable mapNavigation;
 @property (nonatomic, weak) MGLMapView * _Nullable mapView;
+@property (nonatomic) NSInteger patchGroundLevel;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, readonly, strong) ProximiioFloor * _Nullable userFloor;
@@ -722,15 +722,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @end
 
 
-@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
-- (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
-- (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
-@end
-
-
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
+@end
+
+
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
+- (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
+- (void)centerAt:(CLLocationCoordinate2D)coordinate zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
 @end
 
 
@@ -742,15 +743,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
-- (void)setLevelWithLevel:(NSInteger)level;
-@end
-
-
-@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)routeStart:(PIORoute * _Nullable)route;
 - (void)routeCancelWithSilent:(BOOL)silent;
 - (void)routePreview:(PIORoute * _Nullable)route;
 - (void)repeatLastInstruction;
+@end
+
+
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)setLevelWithLevel:(NSInteger)level;
 @end
 
 
