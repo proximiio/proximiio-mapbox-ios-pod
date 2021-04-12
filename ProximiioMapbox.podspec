@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '5.0.22'
+  s.version          = '5.1.1'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '12.0'
 
-  s.dependency 'Proximiio'
+  s.dependency 'Proximiio', '5.1.0'
   s.dependency 'Mapbox-iOS-SDK', '5.9.0'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'

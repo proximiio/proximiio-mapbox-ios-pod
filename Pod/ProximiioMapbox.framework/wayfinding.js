@@ -45,14 +45,17 @@ class Wayfinding {
             || feature.properties.type === 'escalator'
             || feature.properties.type === 'staircase'
         );
+        levelChangerList.forEach(levelChanger => {
+            if (levelChanger.id === undefined) levelChanger.id = levelChanger.properties.id;
+        });
         let accesibilityPoiTypeList = ['door', 'ticket_gate'];
         let accessibilityPoiList = featureList.filter(feature => accesibilityPoiTypeList.includes(feature.properties.type));
 
         // LevelChangers: Create level array from legacy min/max values
         levelChangerList.forEach(levelChanger => {
             if (levelChanger.properties.levels === undefined) {
+                levelChanger.properties.levels = [];
                 if (levelChanger.properties.level_min !== undefined && levelChanger.properties.level_max !== undefined) {
-                    levelChanger.properties.levels = [];
                     for (let level = levelChanger.properties.level_min; level <= levelChanger.properties.level_max; level++) {
                         levelChanger.properties.levels.push(level);
                     }
@@ -760,6 +763,51 @@ class Wayfinding {
         } while (current != null);
 
         path.reverse();
+
+        // Simplify the route by omitting corners that are basically straight
+        let pointsToFilter = [];
+        for (let i = 1; i < (path.length - 1); i++) {
+            let pointA = path[i - 1];
+            let pointB = path[i];
+            let pointC = path[i + 1];
+
+            // Different floors nothing to do
+            if (pointA.properties.level !== pointB.properties.level || pointA.properties.level !== pointC.properties.level) {
+                continue;
+            }
+
+            let bearingAtoB = this._bearing(pointA.geometry.coordinates, pointB.geometry.coordinates);
+            let bearingBtoC = this._bearing(pointB.geometry.coordinates, pointC.geometry.coordinates);
+            let bearingDiff = Math.abs(bearingAtoB - bearingBtoC);
+            if (bearingDiff > Math.PI) {
+                bearingDiff -= Math.PI;
+            }
+            
+            // 4 degrees filter
+            if (bearingDiff < 0.06977777) {
+                pointsToFilter.push(pointB);
+            }
+        }
+
+        // Simplify the route by omitting corners that are basically at the same spot
+        for (let i = 0; i < (path.length - 1); i++) {
+            let pointA = path[i];
+            let pointB = path[i + 1];
+
+            // Different floors nothing to do
+            if (pointsToFilter.includes(pointA) || pointA.properties.level !== pointB.properties.level) {
+                continue;
+            }
+
+            let distanceAtoB = this._distance(pointA, pointB);
+            // 70cm
+            if (distanceAtoB < 0.7) {
+                pointsToFilter.push(pointA);
+            }
+        }
+
+        path = path.filter(pathPoint => !pointsToFilter.includes(pathPoint));
+
         // let pathCoordinates = path.map(point => point.geometry.coordinates);
         return path;
     }
@@ -890,12 +938,15 @@ class Wayfinding {
             if (current === fixedEndPoint) {
 //                console.log('found the route!');
                 let finalPath = this.reconstructPath(current);
-                if (fixedEndPoint !== endPoint && (!fixedEndPoint.properties.onCorridor || this._distance(fixedEndPoint, endPoint) > this._pathFixDistance)) {
+                if (fixedEndPoint !== endPoint && endPoint.properties.levels !== undefined && (!fixedEndPoint.properties.onCorridor || this._distance(fixedEndPoint, endPoint) > this._pathFixDistance)) {
+                    endPoint.properties.fixed = true
                     finalPath.push(endPoint);
                 }
                 if (fixedStartPoint !== startPoint && (!fixedStartPoint.properties.onCorridor || this._distance(fixedStartPoint, startPoint) > this._pathFixDistance)) {
+                    startPoint.properties.fixed = true
                     finalPath.unshift(startPoint);
                 }
+                finalPath[finalPath.length - 1].properties.gscore = current.properties.gscore;
                 return finalPath
             }
             closedSet.push(openSet.splice(openSet.indexOf(current),1));
@@ -914,7 +965,7 @@ class Wayfinding {
                 let gScoreNeighbour = neighbour.properties.gscore != null ? neighbour.properties.gscore : Infinity;
                 if (tentativeGScore < gScoreNeighbour) {
                     neighbour.properties.cameFrom = current;
-                    neighbour.properties.gscore = tentativeGScore;
+                    neighbour.properties.gscore = tentativeGScore + 0.2;
                     neighbour.properties.fscore = tentativeGScore + this._heuristic(neighbour, fixedEndPoint);
                     if (openSet.indexOf(neighbour) < 0) {
                         openSet.push(neighbour);
@@ -1424,9 +1475,11 @@ class Wayfinding {
      */
     _getFixEndPoint(endPoint, startPointLevel) {
         // LC
-        if (endPoint.properties.fixedPointMap !== undefined) {
+        let lc = levelChangers.find(it => it.id === endPoint.id);
+        // if (lc !== undefined) return lc;
+        if (lc !== undefined && lc.properties.fixedPointMap !== undefined) {
             let nearestLevel = undefined;
-            endPoint.properties.fixedPointMap.keys().forEach(level => {
+            lc.properties.fixedPointMap.forEach((fixedPoint, level) => {
                 if (nearestLevel === undefined || Math.abs(nearestLevel - startPointLevel) > Math.abs(level - startPointLevel)) {
                     nearestLevel = level;
                 }
@@ -1574,3 +1627,4 @@ class Wayfinding {
         return 0;
     }
 }
+
