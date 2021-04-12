@@ -33,6 +33,8 @@ TODO: Add long description of the pod here.
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
   s.dependency 'Alamofire'
+  s.dependency 'OpenCombine'
+  s.dependency 'OpenCombineDispatch'
 
   s.frameworks = 'UIKit', 'Network'
 
