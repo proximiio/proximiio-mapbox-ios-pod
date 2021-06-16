@@ -673,6 +673,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder
 
 SWIFT_CLASS("_TtC15ProximiioMapbox20PIOWayfindingOptions")
 @interface PIOWayfindingOptions : NSObject
+@property (nonatomic) BOOL avoidBarriers;
+@property (nonatomic) BOOL avoidElevators;
+@property (nonatomic) BOOL avoidEscalators;
+@property (nonatomic) BOOL avoidNarrowPaths;
+@property (nonatomic) BOOL avoidRamps;
+@property (nonatomic) BOOL avoidRevolvingDoors;
+@property (nonatomic) BOOL avoidStaircases;
+@property (nonatomic) BOOL avoidTicketGates;
+@property (nonatomic) double pathFixDistance;
 - (nonnull instancetype)initWithAvoidElevators:(BOOL)avoidElevators avoidBarriers:(BOOL)avoidBarriers avoidEscalators:(BOOL)avoidEscalators avoidNarrowPaths:(BOOL)avoidNarrowPaths avoidRamps:(BOOL)avoidRamps avoidRevolvingDoors:(BOOL)avoidRevolvingDoors avoidStaircases:(BOOL)avoidStaircases avoidTicketGates:(BOOL)avoidTicketGates pathFixDistance:(double)pathFixDistance OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
