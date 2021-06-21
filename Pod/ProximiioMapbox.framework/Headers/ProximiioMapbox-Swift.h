@@ -240,6 +240,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox15PIOAudioManager")
 @end
 
 @class ProximiioAmenity;
+@class ProximiioAmenityCategory;
 @class ProximiioCampus;
 @class ProximiioGeoJSON;
 
@@ -249,6 +250,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox11PIODatabase")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (PIODatabase * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<ProximiioAmenity *> * _Nonnull)amenities SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<ProximiioAmenityCategory *> * _Nonnull)amenityCategories SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<ProximiioCampus *> * _Nonnull)campuses SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly, copy) NSArray<ProximiioGeoJSON *> * _Nonnull _featuresDb;
 - (NSArray<ProximiioGeoJSON *> * _Nonnull)features SWIFT_WARN_UNUSED_RESULT;
@@ -641,6 +643,16 @@ SWIFT_CLASS("_TtC15ProximiioMapbox17PIOUnitConversion")
 @end
 
 
+SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion7Builder")
+@interface Builder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface PIOUnitConversion (SWIFT_EXTENSION(ProximiioMapbox))
+@end
+
+
 SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion9UnitStage")
 @interface UnitStage : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull unitName;
@@ -650,16 +662,6 @@ SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion9UnitStage")
 - (nonnull instancetype)initWithUnitName:(NSString * _Nonnull)unitName unitConversionToMeters:(double)unitConversionToMeters minValueInMeters:(double)minValueInMeters decimals:(NSInteger)decimals OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@interface PIOUnitConversion (SWIFT_EXTENSION(ProximiioMapbox))
-@end
-
-
-SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion7Builder")
-@interface Builder : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -705,6 +707,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox11PIOWaypoint_")
 @protocol ProximiioMapboxInteraction;
 @protocol ProximiioMapboxNavigation;
 @class NSURL;
+@class ProximiioMapStyle;
 @class ProximiioLocation;
 @class ProximiioFloor;
 @class ProximiioMapboxConfiguration;
@@ -721,6 +724,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic) NSInteger patchGroundLevel;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull blacklistRenderAmenitiesIds;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
+@property (nonatomic, readonly, strong) ProximiioMapStyle * _Nullable style;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
 @property (nonatomic, readonly, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
@@ -742,12 +746,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @end
 
 
+
+
+
+
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
 - (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
 @end
-
-
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
