@@ -324,9 +324,12 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox28PIOHeadingCorrectionCallback_")
 - (void)onHeadingCorrectionWithDegress:(double)degress;
 @end
 
+enum PIOLandmarkSide : NSInteger;
 
 SWIFT_CLASS("_TtC15ProximiioMapbox11PIOLandmark")
 @interface PIOLandmark : NSObject
+@property (nonatomic) enum PIOLandmarkSide side;
+@property (nonatomic, strong) ProximiioGeoJSON * _Nonnull feature;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -362,6 +365,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox21PIONavigationDelegate_")
 - (void)ttsEnableWithEnable:(BOOL)enable;
 - (void)ttsDisable;
 - (void)ttsHazardAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsDestinationAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsSegmentAlertWithEnterEnabled:(BOOL)enterEnabled exitEnabled:(BOOL)exitEnabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsDecisionAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsLevelChangerMetadataKeysWithMetadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
@@ -408,6 +412,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIONavigatio
 - (void)ttsEnableWithEnable:(BOOL)enable;
 - (void)ttsDisable;
 - (void)ttsHazardAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
+- (void)ttsDestinationAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsSegmentAlertWithEnterEnabled:(BOOL)enterEnabled exitEnabled:(BOOL)exitEnabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsDecisionAlertWithEnabled:(BOOL)enabled metadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
 - (void)ttsLevelChangerMetadataKeysWithMetadataKeys:(NSArray<NSNumber *> * _Nonnull)metadataKeys;
