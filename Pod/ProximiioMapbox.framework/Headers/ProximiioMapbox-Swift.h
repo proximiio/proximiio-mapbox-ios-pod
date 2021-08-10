@@ -736,6 +736,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic, weak) MGLMapView * _Nullable mapView;
 @property (nonatomic) NSInteger patchGroundLevel;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull blacklistRenderAmenitiesIds;
+@property (nonatomic, copy) NSDictionary<NSNumber *, NSString *> * _Nonnull levelNameMapper;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, readonly, strong) ProximiioMapStyle * _Nullable style;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
