@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '12.0'
 
-  s.dependency 'Proximiio', '5.1.5'
+  s.dependency 'Proximiio'
   s.dependency 'Mapbox-iOS-SDK', '5.9.0'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
