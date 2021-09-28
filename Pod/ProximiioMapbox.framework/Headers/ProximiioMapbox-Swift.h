@@ -611,8 +611,6 @@ typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, closed) {
 
 SWIFT_CLASS("_TtC15ProximiioMapbox9PIORouter")
 @interface PIORouter : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIORouter * _Nonnull shared;)
-+ (PIORouter * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -629,8 +627,6 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox18PIOSegmentCallback_")
 
 SWIFT_CLASS("_TtC15ProximiioMapbox12PIOTelemetry")
 @interface PIOTelemetry : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOTelemetry * _Nonnull shared;)
-+ (PIOTelemetry * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) BOOL isActive;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -638,7 +634,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOTelemetry
 
 SWIFT_PROTOCOL("_TtP15ProximiioMapbox20PIOTelemetryProtocol_")
 @protocol PIOTelemetryProtocol
-@property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, strong) NSDate * _Nonnull date;
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 - (NSDictionary<NSString *, id> * _Nonnull)toDictionary SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -663,6 +659,7 @@ SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion7Builder")
 @end
 
 
+
 @interface PIOUnitConversion (SWIFT_EXTENSION(ProximiioMapbox))
 @end
 
@@ -680,11 +677,8 @@ SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion9UnitStage")
 
 
 
-
 SWIFT_CLASS("_TtC15ProximiioMapbox13PIOWayfinder2")
 @interface PIOWayfinder2 : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIOWayfinder2 * _Nonnull shared;)
-+ (PIOWayfinder2 * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSArray<ProximiioGeoJSON *> * _Nullable)findPathFrom:(ProximiioGeoJSON * _Nonnull)from to:(ProximiioGeoJSON * _Nonnull)to featureList:(NSArray<ProximiioGeoJSON *> * _Nonnull)featureList options:(PIOWayfindingOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
@@ -737,6 +731,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic, weak) MGLMapView * _Nullable mapView;
 @property (nonatomic) NSInteger patchGroundLevel;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull blacklistRenderAmenitiesIds;
+@property (nonatomic, copy) NSDictionary<NSNumber *, NSString *> * _Nonnull levelNameMapper;
 @property (nonatomic, readonly, copy) NSURL * _Nullable styleURL;
 @property (nonatomic, readonly, strong) ProximiioMapStyle * _Nullable style;
 @property (nonatomic, strong) ProximiioLocation * _Nullable userLocation;
@@ -754,7 +749,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 
 
 
-
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)sayWithText:(NSString * _Nonnull)text;
 @end
@@ -763,14 +757,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 
 
 
-@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
-- (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
-- (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
+
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
 @end
 
 
 
-@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox)) <MGLMapViewDelegate>
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)centerAtUserWithZoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
+- (void)centerAtFeature:(ProximiioGeoJSON * _Nonnull)feature zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(ProximiioGeoJSON * _Nonnull))completed;
+- (void)centerAt:(CLLocationCoordinate2D)coordinate zoom:(double)zoom animated:(BOOL)animated completed:(void (^ _Nullable)(BOOL))completed;
 @end
 
 
