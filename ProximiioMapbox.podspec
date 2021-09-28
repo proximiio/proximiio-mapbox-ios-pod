@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '5.1.4'
+  s.version          = '5.1.12-maplibre'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
@@ -26,19 +26,17 @@ TODO: Add long description of the pod here.
   s.author           = { 'x-oauth-basic' => 'matej.drzik@quanto.sk' }
   s.source           = { :git => 'https://github.com/proximiio/proximiio-mapbox-ios-pod.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
 
   s.dependency 'Proximiio'
   s.dependency 'MapLibre'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
   s.dependency 'Alamofire'
-  s.dependency 'OpenCombine'
-  s.dependency 'OpenCombineDispatch'
 
   s.frameworks = 'UIKit', 'Network'
 
-  s.swift_version = '5.2'
+  s.swift_version = '5.3'
 
   s.vendored_frameworks = 'Pod/ProximiioMapbox.framework'
 end
