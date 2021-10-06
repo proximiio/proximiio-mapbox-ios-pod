@@ -738,6 +738,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic, readonly, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
 @property (nonatomic, strong) PIODatabase * _Nonnull database;
+@property (nonatomic, copy) NSString * _Nullable customOSRMURL;
 @property (nonatomic) BOOL followingUser;
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
 - (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
