@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '5.1.12-maplibre'
+  s.version          = '5.1.13-maplibre'
   s.summary          = 'Proximi.io Mapbox Indoor Support'
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
 
   s.frameworks = 'UIKit', 'Network'
 
-  s.swift_version = '5.3'
+  s.swift_version = '5.5'
 
   s.vendored_frameworks = 'Pod/ProximiioMapbox.framework'
 end

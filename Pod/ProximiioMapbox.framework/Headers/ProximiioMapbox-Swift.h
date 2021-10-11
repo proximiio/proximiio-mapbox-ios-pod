@@ -658,6 +658,7 @@ SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion7Builder")
 @end
 
 
+
 @interface PIOUnitConversion (SWIFT_EXTENSION(ProximiioMapbox))
 @end
 
@@ -672,7 +673,6 @@ SWIFT_CLASS("_TtCC15ProximiioMapbox17PIOUnitConversion9UnitStage")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
@@ -711,6 +711,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox11PIOWaypoint_")
 
 
 
+
 @protocol ProximiioMapboxInteraction;
 @protocol ProximiioMapboxNavigation;
 @class NSURL;
@@ -737,7 +738,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 @property (nonatomic, readonly, strong) ProximiioFloor * _Nullable userFloor;
 @property (nonatomic) NSInteger mapFloor;
 @property (nonatomic, strong) PIODatabase * _Nonnull database;
-@property (nonatomic, copy) NSString * _Nullable customOSRMURL;
+@property (nonatomic, copy) NSString * _Nullable customOSRMPath;
 @property (nonatomic) BOOL followingUser;
 - (void)setConfigurationWithNewConfiguration:(ProximiioMapboxConfiguration * _Nonnull)newConfiguration;
 - (void)initialize:(void (^ _Nonnull)(enum ProximiioMapboxAuthorizationResult))completion;
@@ -783,20 +784,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 
 
 @interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
-- (void)routeCalculateWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
-- (void)routeFindWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
-- (void)routeFindAndPreviewWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
-- (void)routeFindAndStartWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
-- (void)navigateWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration preview:(BOOL)preview start:(BOOL)start callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
-@end
-
-
-@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
 - (void)routeStart:(PIORoute * _Nullable)route;
 - (void)routeCancelWithSilent:(BOOL)silent;
 - (void)routeRender:(PIORoute * _Nullable)route source:(NSString * _Nonnull)source clear:(BOOL)clear isAlternate:(BOOL)isAlternate;
 - (void)routePreview:(PIORoute * _Nullable)route;
 - (void)repeatLastInstruction;
+@end
+
+
+@interface ProximiioMapbox (SWIFT_EXTENSION(ProximiioMapbox))
+- (void)routeCalculateWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
+- (void)routeFindWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
+- (void)routeFindAndPreviewWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
+- (void)routeFindAndStartWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
+- (void)navigateWithConfiguration:(PIORouteConfiguration * _Nonnull)configuration preview:(BOOL)preview start:(BOOL)start callback:(void (^ _Nonnull)(PIORoute * _Nullable))callback;
 @end
 
 typedef SWIFT_ENUM(NSInteger, ProximiioMapboxAuthorizationResult, closed) {
