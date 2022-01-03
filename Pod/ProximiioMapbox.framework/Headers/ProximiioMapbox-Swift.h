@@ -274,7 +274,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox9PIOFilter_")
 - (BOOL)filterItemWithFeature:(ProximiioGeoJSON * _Nonnull)feature input:(NSArray<NSString *> * _Nonnull)input SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PIOGuidanceDirection, closed) {
+typedef SWIFT_ENUM(NSInteger, PIOGuidanceDirection, open) {
   PIOGuidanceDirectionNone = 0,
   PIOGuidanceDirectionStart = 1,
   PIOGuidanceDirectionTurnAround = 2,
@@ -342,7 +342,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox19PIOLandmarkCallback_")
 - (void)onLandmarkExitedRangeWithLandmarkList:(NSArray<ProximiioGeoJSON *> * _Nonnull)landmarkList;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PIOLandmarkSide, closed) {
+typedef SWIFT_ENUM(NSInteger, PIOLandmarkSide, open) {
   PIOLandmarkSideLeft = 0,
   PIOLandmarkSideRight = 1,
 };
@@ -594,7 +594,7 @@ SWIFT_CLASS("_TtC15ProximiioMapbox18PIORouteUpdateData")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, closed) {
+typedef SWIFT_ENUM(NSInteger, PIORouteUpdateType, open) {
   PIORouteUpdateTypeCalculating = 0,
   PIORouteUpdateTypeRecalculating = 1,
   PIORouteUpdateTypeRouteNotfound = 2,
@@ -799,7 +799,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ProximiioMap
 - (void)repeatLastInstruction;
 @end
 
-typedef SWIFT_ENUM(NSInteger, ProximiioMapboxAuthorizationResult, closed) {
+typedef SWIFT_ENUM(NSInteger, ProximiioMapboxAuthorizationResult, open) {
   ProximiioMapboxAuthorizationResultSuccess = 0,
   ProximiioMapboxAuthorizationResultInvalid = 1,
   ProximiioMapboxAuthorizationResultFailure = 2,
@@ -846,7 +846,7 @@ SWIFT_PROTOCOL("_TtP15ProximiioMapbox25ProximiioMapboxNavigation_")
 - (void)onTTSDirectionWithText:(NSString * _Nullable)text;
 @end
 
-typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, closed) {
+typedef SWIFT_ENUM(NSInteger, ProximiioMapboxNetworkResult, open) {
   ProximiioMapboxNetworkResultSuccess = 0,
   ProximiioMapboxNetworkResultFailure = 1,
 };
