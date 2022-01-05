@@ -15,11 +15,10 @@ import SnapKit
 class ViewController: UIViewController {
     
     private var mapView: MGLMapView?
-    private var mapBoxHelper: ProximiioMapbox?
-    
+
     private var inputs: [ProximiioInput] {
         if let inputs = Proximiio.sharedInstance()?.inputs() {
-            return inputs as? [ProximiioInput] ?? []
+            return inputs
         }
         return []
     }
@@ -27,7 +26,7 @@ class ViewController: UIViewController {
     private var floors: [ProximiioFloor] {
         let floor = Proximiio.sharedInstance()?.currentFloor()
         if let floors = Proximiio.sharedInstance()?.floors() {
-            let typed = floors as? [ProximiioFloor] ?? []
+            let typed = floors
             if floor != nil {
                 let filtered = typed.filter { (flr) -> Bool in
                     flr.placeId == floor?.placeId
@@ -61,7 +60,7 @@ class ViewController: UIViewController {
             /// process only if we are far than previous
             var forceUpdateFeature = false
             if let current = currentUserPosition?.toCLLocation(),
-                let last = UserLocation.shared.coordinate?.toCLLocation() {
+               let last = UserLocation.shared.coordinate?.toCLLocation() {
                 forceUpdateFeature = current.distance(from: last) > 1500
             }
             
@@ -73,22 +72,20 @@ class ViewController: UIViewController {
             
             guard
                 forceUpdateFeature
-                else { return }
+            else { return }
             
             /// sort the list by title and level
-            let list = (self.mapBoxHelper?.database.pois ?? [])
+            let list = ProximiioMapbox.shared.database.pois()
                 .filter({ feature -> Bool in
                     guard
                         let point = feature.coordinate,
                         let user = self.currentUserPosition
-                        else { return false }
+                    else { return false }
                     return user.toCLLocation().distance(from: point.toCLLocation()) < 2000.0 // filter within 2km aks 2000mt
                 })
                 .sorted { (first, second) -> Bool in
                     first.getTitle() < second.getTitle()
-            }                .sorted { (first, second) -> Bool in
-                first.level < second.level
-            }
+                }
             
             DispatchQueue.main.async {
                 UserLocation.shared.nearByPOI = list
@@ -110,21 +107,22 @@ class ViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
         
         /// force follow the path of current route
-        self.mapBoxHelper?.shakyHandsMode = true
+        ProximiioMapbox.shared.shakyHandsMode = true
         
         /// manage navigator
-        self.mapBoxHelper?.navigation?.ttsEnable(enable: true)
-        self.mapBoxHelper?.navigation?.ttsHeadingCorrection(enabled: true)
-        self.mapBoxHelper?.navigation?.ttsDecisionAlert(enabled: true, metadataKeys: [])
-        self.mapBoxHelper?.navigation?.ttsHazardAlert(enabled: true, metadataKeys: [])
-        self.mapBoxHelper?.navigation?.ttsLandmarkAlert(enabled: true, metadataKeys: [])
-        self.mapBoxHelper?.navigation?.ttsSegmentAlert(
+        ProximiioMapbox.shared.navigation?.ttsEnable(enable: true)
+        ProximiioMapbox.shared.navigation?.ttsHeadingCorrection(enabled: true)
+        ProximiioMapbox.shared.navigation?.ttsDecisionAlert(enabled: true, metadataKeys: [])
+        ProximiioMapbox.shared.navigation?.ttsHazardAlert(enabled: true, metadataKeys: [])
+        ProximiioMapbox.shared.navigation?.ttsLandmarkAlert(enabled: true, metadataKeys: [])
+        ProximiioMapbox.shared.navigation?.ttsSegmentAlert(
             enterEnabled: true,
             exitEnabled: true,
             metadataKeys: [])
-        self.mapBoxHelper?.navigation?.ttsReassuranceInstruction(enabled: true)
-        self.mapBoxHelper?.navigation?.ttsReassuranceInstruction(distance: 10.0)
-        self.mapBoxHelper?.navigation?.setUnitConversion(unitName: "meter", conversionCoefficiente: 1.0)
+        ProximiioMapbox.shared.navigation?.ttsReassuranceInstruction(enabled: true)
+        ProximiioMapbox.shared.navigation?.ttsReassuranceInstruction(distance: 10.0)
+        ProximiioMapbox.shared.navigation?.setUnitConversion(conversion: .Default )
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -162,11 +160,11 @@ extension ViewController {
         
         /// setup ProximiioMapbox handler
         if let mapView = mapView {
-            mapBoxHelper = ProximiioMapbox(mapView: mapView, configuration: config)
-            mapBoxHelper?.initialize { result in
+            ProximiioMapbox.shared.setup(mapView: mapView, configuration: config)
+            ProximiioMapbox.shared.initialize { result in
                 if result == .success {
-                    self.mapBoxHelper?.mapNavigation = self
-                    self.mapBoxHelper?.mapInteraction = self
+                    ProximiioMapbox.shared.mapNavigation = self
+                    ProximiioMapbox.shared.mapInteraction = self
                 }
             }
         }
@@ -224,12 +222,36 @@ extension ViewController: ProximiioDelegate {
     func proximiioPositionUpdated(_ location: ProximiioLocation!) {
         /// optional if we want to stay in sync with current user position
         currentUserPosition = location.coordinate
-        print(currentUserPosition)
+        //        print(currentUserPosition)
     }
 }
 
 // MARK: ProximiioMapbox Navigation Delegate
 extension ViewController: ProximiioMapboxNavigation {
+    func onHazardExit(_ hazard: ProximiioGeoJSON) {
+
+    }
+
+    func onSegmentExit(_ segment: ProximiioGeoJSON) {
+
+    }
+
+    func onDecisionExit(_ decision: ProximiioGeoJSON) {
+
+    }
+
+    func onLandmarkExit(_ landmarks: [ProximiioGeoJSON]) {
+
+    }
+
+    func onTTS() {
+
+    }
+
+    func onTTSDirection(text: String?) {
+
+    }
+
     func onDecisionEntered(_ decision: ProximiioGeoJSON) {
     }
     
@@ -265,6 +287,10 @@ extension ViewController: ProximiioMapboxNavigation {
 
 // MARK: ProximiioMapbox Interaction Delegate
 extension ViewController: ProximiioMapboxInteraction {
+    func onFollowingUserUpdate(_ isFollowing: Bool) {
+
+    }
+
     func change(floor: Int) {
         // triggered when floor has changed
         
@@ -276,17 +302,20 @@ extension ViewController: ProximiioMapboxInteraction {
         }
     }
     
-    func onTap(feature: ProximiioGeoJSON) {
+    func onTap(feature: ProximiioGeoJSON?) {
         // triggered if user taps on a POI
-        
-        /// define route rules
-        let options = PIORouteOptions()
-        /// define avoid rules
-        options.avoidElevators = true
-        options.avoidBarriers = true
+        guard let feature = feature else { return }
+
+        let configuration = PIORouteConfiguration(
+            start: nil,
+            destination: feature,
+            waypointList: [],
+            wayfindingOptions: PIOWayfindingOptions(avoidElevators: false, avoidBarriers: false, avoidEscalators: false, avoidNarrowPaths: false, avoidRamps: false, avoidRevolvingDoors: false, avoidStaircases: false, avoidTicketGates: false, pathFixDistance: 1.0)
+        )
         
         /// show route to a poi
-        mapBoxHelper?.routeFindAndStart(to: feature, options: options)
+        ProximiioMapbox.shared.routeFindAndPreview(configuration: configuration) { route in
+        }
     }
     
     func onRequestReRoute() {
@@ -306,7 +335,7 @@ extension ViewController {
             
             // show proper level
             if let floor = UserLocation.shared.floor {
-                mapBoxHelper?.setLevel(level: floor)
+                ProximiioMapbox.shared.setLevel(level: floor)
                 
                 if let currentFloor = floors.first(where: { item -> Bool in
                     item.level.intValue == floor
@@ -319,14 +348,14 @@ extension ViewController {
     
     private func setFloor(floor: ProximiioFloor) {
         /// update map UI
-        mapBoxHelper?.setLevel(level: floor.level.intValue)
+        ProximiioMapbox.shared.setLevel(level: floor.level.intValue)
     }
     
     private func didTapCompass() {
-        mapBoxHelper?.followingUser = !(mapBoxHelper?.followingUser ?? false)
+        ProximiioMapbox.shared.followingUser = !(ProximiioMapbox.shared.followingUser)
         
         /// force center to user position
-        if mapBoxHelper?.followingUser ?? false {
+        if ProximiioMapbox.shared.followingUser {
             centerAtUser()
         }
     }

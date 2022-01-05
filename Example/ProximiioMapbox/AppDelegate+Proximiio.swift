@@ -14,31 +14,28 @@ import Kingfisher
 extension AppDelegate {
     func setupProximiio() {
         /// force check permission
-        Proximiio.sharedInstance()?.requestPermissions()
+        Proximiio.sharedInstance()?.requestPermissions(true)
         /// show the main application
         Proximiio.sharedInstance()?.auth(withToken: appToken, callback: { state in
             
             /// if boot up of proximiio went fine
             if state == kProximiioReady {
                 
-                /// force sync amenities
-                Proximiio.sharedInstance()?.syncAmenities({ _ in
-                    
-                    /// and try sync features too
-                    Proximiio.sharedInstance()?.syncFeatures({ _ in
-                        
-                        /// if all fine start extra stuffs
-                        self.startProximiio()
-                        
-                        /// show app
-                        self.showApp()
-                        
-                        /// preload images
-                        self.preloadFeatureImages { _ in }
-                    })
-                    
+
+                /// and try sync features too
+                Proximiio.sharedInstance()?.sync({ _ in
+
+                    /// if all fine start extra stuffs
+                    self.startProximiio()
+
+                    /// show app
+                    self.showApp()
+
+                    /// preload images
+                    self.preloadFeatureImages { _ in }
                 })
-                
+
+
             } else {
                 self.startProximiio()
                 
@@ -60,21 +57,26 @@ extension AppDelegate {
     
     private func preloadFeatureImages(callback: @escaping ((Bool) -> Void)) {
         var completed = 0
-        PIODatabase.shared.features.forEach { feature in
+        PIODatabase.sharedInstance().features().forEach { feature in
             feature.images.forEach {
                 if let imgUrl = URL(string: $0) {
                     completed += 1
-                    ImageDownloader.default.downloadImage(with: imgUrl, retrieveImageTask: nil, options: [], progressBlock: nil) { (image, _, url, _) in
-                        completed -= 1
-                        
-                        if completed == 0 {
-                            callback(true)
+                    ImageDownloader
+                        .default
+                        .downloadImage(
+                            with: imgUrl, options: []) { (result) in
+                            completed -= 1
+                            switch result {
+                            case .success(let image):
+                                if let url = image.url {
+                                    ImageCache.default.store(image.image, forKey: url.absoluteString)
+                                }
+                            default: break
+                            }
+                            if completed == 0 {
+                                callback(true)
+                            }
                         }
-                        
-                        if let image =  image, let url = url {
-                            ImageCache.default.store(image, forKey: url.absoluteString)
-                        }
-                    }
                 }
             }
         }

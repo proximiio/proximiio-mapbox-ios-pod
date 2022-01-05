@@ -1,33 +1,29 @@
 PODS:
-  - Alamofire (5.0.5)
-  - CrystDBCipher (0.1.10):
+  - Alamofire (5.5.0)
+  - CrystDBCipher (0.1.11):
     - SQLCipher
-  - DarklyEventSource (4.1.0)
+  - DarklyEventSource (4.1.1)
   - GRMustache.swift (4.0.1)
-  - IndoorAtlas (3.2.1)
-  - Kingfisher (5.13.2):
-    - Kingfisher/Core (= 5.13.2)
-  - Kingfisher/Core (5.13.2)
-  - Mapbox-iOS-SDK (5.7.0):
-    - MapboxMobileEvents (= 0.10.2)
+  - Kingfisher (7.1.2)
   - MapboxMobileEvents (0.10.2)
-  - Proximiio (1.3.0):
+  - MapLibre (5.12.1):
+    - MapboxMobileEvents (= 0.10.2)
+  - Proximiio (5.2.16):
     - CrystDBCipher
     - DarklyEventSource
-    - IndoorAtlas
-  - ProximiioMapbox (0.3.0):
+  - ProximiioMapbox (5.2.0):
     - Alamofire
     - GRMustache.swift
-    - Mapbox-iOS-SDK
+    - MapLibre
     - Proximiio
     - SwiftyJSON
   - SnapKit (5.0.1)
-  - SQLCipher (4.3.0):
-    - SQLCipher/standard (= 4.3.0)
-  - SQLCipher/common (4.3.0)
-  - SQLCipher/standard (4.3.0):
+  - SQLCipher (4.5.0):
+    - SQLCipher/standard (= 4.5.0)
+  - SQLCipher/common (4.5.0)
+  - SQLCipher/standard (4.5.0):
     - SQLCipher/common
-  - SwiftyJSON (5.0.0)
+  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Kingfisher
@@ -36,39 +32,38 @@ DEPENDENCIES:
   - SnapKit
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs:
     - Alamofire
     - CrystDBCipher
     - DarklyEventSource
     - GRMustache.swift
-    - IndoorAtlas
     - Kingfisher
-    - Mapbox-iOS-SDK
     - MapboxMobileEvents
     - Proximiio
     - SnapKit
     - SQLCipher
     - SwiftyJSON
+  https://github.com/proximiio/proximiio-specs.git:
+    - MapLibre
 
 EXTERNAL SOURCES:
   ProximiioMapbox:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
-  CrystDBCipher: 1aa65c16eac9086ec4924d3e231be73b7c8594cf
-  DarklyEventSource: 71645100c07b7b6f57c4d62227bca3cf3a9b7796
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  CrystDBCipher: 0b2f8e78df7a6f373c384a1671f8efd54af16974
+  DarklyEventSource: 6df384dcdb211d2b6bfbbe93a3148bd25567dd61
   GRMustache.swift: a6436504284b22b4b05daf5f46f77bd3fe00a9a2
-  IndoorAtlas: 29870441ddd87308885e9bd8da9eff5d69f35577
-  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
-  Mapbox-iOS-SDK: 1b7cb0e739247d20ef75f5f14aa6ce34e1f0660f
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
-  Proximiio: 9760bdd2bd5bd3282b32b8052573ffb2108b2ff2
-  ProximiioMapbox: 9bc436e71bf579825ac808e5d6a1267d8eb2d4a9
+  MapLibre: f44d4106a590d1ea6779fb6c96c048ec6a9a2767
+  Proximiio: 4af524a3eaeec42c5d61e175ded5316dfb1c39d2
+  ProximiioMapbox: 289c877caca288e638e17cc8be5e183a7cf56ec2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SQLCipher: d305a7bd9af4b64f095c79bdc1a1fa50f2a15116
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SQLCipher: 98dc22f27c0b1790d39e710d440f22a466ebdb59
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 70acf1d7bad9d71f38c491061509d49a584c3257
+PODFILE CHECKSUM: ecfee65f177a331379674bfa7fce02522629e39f
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.11.2
