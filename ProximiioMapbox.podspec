@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ProximiioMapbox'
-  s.version          = '5.1.18'
-  s.summary          = 'Proximi.io Mapbox Indoor Support'
+  s.version          = '5.2.0'
+  s.summary          = 'Proximi.io MapLibre Indoor Support'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,14 +29,14 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '12.0'
 
   s.dependency 'Proximiio'
-  s.dependency 'Mapbox-iOS-SDK', '5.9.0'
+  s.dependency 'MapLibre'
   s.dependency 'SwiftyJSON'
   s.dependency 'GRMustache.swift'
   s.dependency 'Alamofire'
 
   s.frameworks = 'UIKit', 'Network'
 
-  s.swift_version = '5.4'
+  s.swift_version = '5.5'
 
   s.vendored_frameworks = 'Pod/ProximiioMapbox.framework'
 end
